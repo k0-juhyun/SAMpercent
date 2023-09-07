@@ -10,6 +10,8 @@ public class JHCarTest : MonoBehaviour
     public bool isHazardWarningLight;
     public bool isleftTurnSignalLight;
     public bool isrightTurnSignalLight;
+    public bool isIn1stLine;
+    public bool isIn2ndLine;
 
     public GameObject hazardWarningLight;
     public GameObject leftTurnSignalLight;
@@ -31,7 +33,7 @@ public class JHCarTest : MonoBehaviour
         moveDirection.Normalize();
         rb.AddForce(moveDirection * movePower);
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.velocity = Vector3.zero;
         }
@@ -62,7 +64,7 @@ public class JHCarTest : MonoBehaviour
             print("ºñ»ó±ôºýÀÌ ²ô±â");
         }
 
-        if(Input.GetKeyDown(KeyCode.Alpha2) && isleftTurnSignalLight == false)
+        if (Input.GetKeyDown(KeyCode.Alpha2) && isleftTurnSignalLight == false)
         {
             isleftTurnSignalLight = true;
             print("ÁÂÈ¸Àü ±ôºýÀÌ ÄÔ");
@@ -84,6 +86,22 @@ public class JHCarTest : MonoBehaviour
         {
             isrightTurnSignalLight = false;
             print("¿ìÈ¸Àü ±ôºýÀÌ ²û");
+        }
+        #endregion
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        #region Â÷¼± ÁÖÇàÁß
+        if (other.gameObject.name == "1stLine")
+        {
+            isIn1stLine = true;
+            isIn2ndLine = false;
+        }
+        if (other.gameObject.name == "2ndLine")
+        {
+            isIn2ndLine = true;
+            isIn1stLine = false;
         }
         #endregion
     }
