@@ -12,6 +12,7 @@ public class JHCarTest : MonoBehaviour
     public bool isrightTurnSignalLight;
     public bool isIn1stLine;
     public bool isIn2ndLine;
+    public bool isStartUp;
 
     public GameObject hazardWarningLight;
     public GameObject leftTurnSignalLight;
