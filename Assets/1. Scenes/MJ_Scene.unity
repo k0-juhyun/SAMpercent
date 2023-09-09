@@ -987,7 +987,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527602163}
   m_LocalRotation: {x: 0, y: 0.0077928505, z: -0, w: -0.9999697}
-  m_LocalPosition: {x: -0.66, y: 1.51, z: 0.22}
+  m_LocalPosition: {x: -0.66, y: 0.03, z: 0.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16955,7 +16955,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 14
+  m_Constraints: 78
   m_CollisionDetection: 0
 --- !u!59 &6114577206312217817
 HingeJoint:
@@ -18544,6 +18544,7 @@ MonoBehaviour:
   breakingForce: 300
   maxTurnAngle: 15
   handle: {fileID: 1737752948977308698}
+  rotationTime: 1
 --- !u!33 &6711977832429109533
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -21456,6 +21457,7 @@ MonoBehaviour:
   breakingForce: 300
   maxTurnAngle: 15
   handle: {fileID: 0}
+  rotationTime: 0
 --- !u!4 &7805851947042560165
 Transform:
   m_ObjectHideFlags: 0

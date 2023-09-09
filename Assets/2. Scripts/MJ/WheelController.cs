@@ -13,6 +13,8 @@ public class WheelController : MonoBehaviour
     private float currentAcceleration = 0f, currentBreakForce = 0f, currentTurnAngle;
 
     public Transform handle;
+    private float rotationVelocity;
+    public float rotationTime = 1f;
 
     public void FixedUpdate()
     {
@@ -57,5 +59,11 @@ public class WheelController : MonoBehaviour
         currentAcceleration = acceleration * Input.GetAxis("Vertical");
         //핸들을 잡았을 때 두 수평 값을 가져온다.
         currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
+
+        //핸들 방향을 z축으로 부드럽게 회전시킨다.
+        float angle = Mathf.SmoothDampAngle(handle.eulerAngles.z, -currentTurnAngle * 6, ref rotationVelocity, rotationTime);
+
+        //핸들의 회전값을 적용한다.
+        handle.localRotation = Quaternion.Euler(0f, 0f, angle);
     }
 }
