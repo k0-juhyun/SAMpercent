@@ -17,4 +17,12 @@ public class ScoreManager : MonoBehaviour
         Score -= deducScore;
         return Score;
     }
+
+    private void Update()
+    {
+        if(Score < 80) 
+        {
+            print("ºÒÇÕ°Ý");
+        }
+    }
 }
