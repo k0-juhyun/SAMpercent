@@ -796,19 +796,20 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 15
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "1: \uBE44\uC0C1\uAE5C\uBE61\uC774\n2: \uC88C\uCE21 \uAE5C\uBE61\uC774\n3:
-    \uC6B0\uCE21 \uAE5C\uBE61\uC774"
+  m_Text: "f1:\uBE44\uC0C1\uAE5C\uBE61\uC774\nf2: \uC88C\uD68C\uC804\nf3: \uC6B0\uD68C\uC804\n\n1:
+    \uC548\uC804\uBCA8\uD2B8\n2: \uC804\uC870\uB4F1\n3: \uC0C1\uD5A5\uB4F1\n4: \uD558\uD5A5\uB4F1\n5:
+    \uC640\uC774\uD37C\n6: \uC0AC\uC774\uB4DC\uBE0C\uB808\uC774\uD06C"
 --- !u!222 &338064407
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -827,6 +828,8 @@ GameObject:
   m_Component:
   - component: {fileID: 511493576}
   - component: {fileID: 511493577}
+  - component: {fileID: 511493579}
+  - component: {fileID: 511493578}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -863,6 +866,125 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Score: 100
+--- !u!82 &511493578
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511493575}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &511493579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511493575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeaa588dd146a9d4e81d830b9219cc7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comments:
+  - {fileID: 8300000, guid: 42b08b47f7da6a14186510db6ab0e6ba, type: 3}
+  - {fileID: 8300000, guid: 7a514810bd8cc9c408ffc762dc5ffd4f, type: 3}
+  - {fileID: 8300000, guid: d8837503291b78d439cc21cb84cf9bb5, type: 3}
+  - {fileID: 8300000, guid: ec2296bb09bbe324aa41cf96a2ccdd67, type: 3}
+  - {fileID: 8300000, guid: 43da3e62d3ddb90499b5d7e2bf8429b1, type: 3}
+  - {fileID: 8300000, guid: bd86ea6ab2c18174e9db9fdd62de452a, type: 3}
+  - {fileID: 8300000, guid: 25bc3819f4650dc4d98a338d7be42f3f, type: 3}
+  - {fileID: 8300000, guid: 53af86eeecf013a4abcd6eadb324ed9f, type: 3}
+  - {fileID: 8300000, guid: 3cd4dc0f26a034c418a198ed38100324, type: 3}
+  licenseFlow: 0
 --- !u!1 &586441444
 GameObject:
   m_ObjectHideFlags: 0
@@ -12656,7 +12778,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3561649166761742754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2550, y: 0, z: -3426}
+  m_LocalPosition: {x: -2550, y: 0, z: -2901}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12691,13 +12813,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movePower: 100
+  isStartUp: 0
   isBreak: 0
   isHazardWarningLight: 0
   isleftTurnSignalLight: 0
   isrightTurnSignalLight: 0
   isIn1stLine: 0
   isIn2ndLine: 0
-  isStartUp: 0
+  isSeatBelt: 0
+  isHeadLight: 0
+  isHightBeam: 0
+  isLowBeam: 0
+  isWiper: 0
+  isSideBreak: 0
+  isEnd: 0
   hazardWarningLight: {fileID: 1157142921}
   leftTurnSignalLight: {fileID: 158231804}
   rightTurnSignalLight: {fileID: 1083731373}
@@ -12714,7 +12843,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!23 &4194626063602698154

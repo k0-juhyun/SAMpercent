@@ -36,7 +36,7 @@ public class SuddenStop : MonoBehaviour
             if (lightLimitTime <= 0)
             {
                 ScoreManager.instance.Deduction(suddenStopScore);
-                print("3초q 이내에 비상깜빡이 키지않아서 감점: " + suddenStopScore);
+                print("3초 이내에 비상깜빡이 키지않아서 감점: " + suddenStopScore);
             }
             break;
         }
