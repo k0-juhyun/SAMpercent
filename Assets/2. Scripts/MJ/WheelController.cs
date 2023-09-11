@@ -45,11 +45,11 @@ public class WheelController : MonoBehaviour
     private void Stop()
     {
         //VR ¿ÞÂÊ ÇÚµéÀÇ Trigger¸¦ ´­·¶À» ¶§
-        if (Input.GetKey(KeyCode.Space) currentBreakForce = breakingForce;
+        if (Input.GetKey(KeyCode.Space)) currentBreakForce = breakingForce;
 
     }
 
-    private void Accerate() = currentBreakForce = 0f;
+    private void Accerate() => currentBreakForce = 0f;
 
     private void InitMoveInput()
     {
