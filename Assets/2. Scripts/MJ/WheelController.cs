@@ -45,11 +45,10 @@ public class WheelController : MonoBehaviour
     private void Stop()
     {
         //VR 왼쪽 핸들의 Trigger를 눌렀을 때
-        if (Input.GetKey(KeyCode.Space) currentBreakForce = breakingForce;
-
+        if (Input.GetKey(KeyCode.Space)) currentBreakForce = breakingForce;
     }
 
-    private void Accerate() = currentBreakForce = 0f;
+    private void Accerate() => currentBreakForce = 0f;
 
     private void InitMoveInput()
     {
@@ -57,7 +56,6 @@ public class WheelController : MonoBehaviour
         currentAcceleration = acceleration * Input.GetAxis("Vertical");
         //핸들을 잡았을 때 두 수평 값을 가져온다.
         currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
-
     }
 
     private void RotateSteer()

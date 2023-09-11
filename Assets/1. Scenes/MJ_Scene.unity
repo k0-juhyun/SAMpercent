@@ -18544,7 +18544,7 @@ MonoBehaviour:
   breakingForce: 300
   maxTurnAngle: 15
   handle: {fileID: 1737752948977308698}
-  rotationTime: 1
+  rotationTime: 0.7
 --- !u!33 &6711977832429109533
 MeshFilter:
   m_ObjectHideFlags: 0
