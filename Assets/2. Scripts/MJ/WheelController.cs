@@ -20,7 +20,9 @@ public class WheelController : MonoBehaviour
     {
         InitMoveInput();
         InitWheelPropertys();
-        StopPedal();
+        Stop();
+        Accerate();
+        RotateSteer();
     }
 
     private void InitWheelPropertys()
@@ -40,18 +42,14 @@ public class WheelController : MonoBehaviour
         }
     }
 
-    private void StopPedal()
+    private void Stop()
     {
         //VR 왼쪽 핸들의 Trigger를 눌렀을 때
-        if (Input.GetKey(KeyCode.Space))
-        {
-            currentBreakForce = breakingForce;
-        }
-        else
-        {
-            currentBreakForce = 0f;
-        }
+        if (Input.GetKey(KeyCode.Space) currentBreakForce = breakingForce;
+
     }
+
+    private void Accerate() = currentBreakForce = 0f;
 
     private void InitMoveInput()
     {
@@ -60,6 +58,10 @@ public class WheelController : MonoBehaviour
         //핸들을 잡았을 때 두 수평 값을 가져온다.
         currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
 
+    }
+
+    private void RotateSteer()
+    {
         //핸들 방향을 z축으로 부드럽게 회전시킨다.
         float angle = Mathf.SmoothDampAngle(handle.eulerAngles.z, -currentTurnAngle * 6, ref rotationVelocity, rotationTime);
 
