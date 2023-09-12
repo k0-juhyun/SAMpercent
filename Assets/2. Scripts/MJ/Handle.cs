@@ -13,6 +13,7 @@ public class Handle : XRBaseInteractable
     private float currentAngle = 0f;
 
     public float rotationTime = 1f;
+    private float rotationVelocity;
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
@@ -55,9 +56,9 @@ public class Handle : XRBaseInteractable
         float angleDifference = currentAngle - totalHandleAngle;
         //3. 핸들을 z축 방향으로, 간격차 만큼, 월드 방향으로 부드럽게 돌린다.
         handle.Rotate(transform.forward, -angleDifference, Space.World);
-        //4. 현재 각도를 총 각도로 저장한다.
+        ////4. 현재 각도를 총 각도로 저장한다.
         currentAngle = totalHandleAngle;
-        //5. 핸들 이벤트가 있을 때 핸들을 돌린 값을 리스트 이벤트에 저장한다.
+        ////5. 핸들 이벤트가 있을 때 핸들을 돌린 값을 리스트 이벤트에 저장한다.
         HandleRotated?.Invoke(angleDifference);
     }
 
@@ -70,7 +71,7 @@ public class Handle : XRBaseInteractable
         foreach (IXRSelectInteractor interactor in interactorsSelecting)
         {
             //3. 상호작용 선택된 interactor의 위치 벡터를 가져오고 변수에 저장한다.
-            Vector2 interactorPos = GetNormalPoint(interactor.transform.position);
+            Vector3 interactorPos = interactor.transform.localPosition;
             //4. 총 각도에 위치 벡터 각도와 회전 민감도f
             totalAngle += SetHandleAngle(interactorPos) * GetRotationSensitivity();
         }
@@ -78,12 +79,12 @@ public class Handle : XRBaseInteractable
         return totalAngle;
     }
 
-    //위치 포인트를 가져온다.
-    //1. 핸들의 위치를 로컬 위치로 만들고 normalized 한다.
-    private Vector2 GetNormalPoint(Vector3 position) => transform.InverseTransformPoint(position).normalized;
-
     //두 벡터 사이의 각도를 구한다(signedAngle) z회전 축 벡터, 비교할 벡터)
-    private float SetHandleAngle(Vector2 direction) => Vector2.SignedAngle(Vector2.up, direction);
+    private float SetHandleAngle(Vector3 direction)
+    {
+        float rotationAngle = Vector2.SignedAngle(transform.up, direction);
+        return Mathf.SmoothDampAngle(handle.eulerAngles.z, rotationAngle, ref rotationVelocity, rotationTime);
+    }
 
     //양손 회전 감도를 더 작게 사용
     private float GetRotationSensitivity() => 1.0f / interactorsSelecting.Count;
