@@ -23,7 +23,6 @@ public class WheelController : MonoBehaviour
         InitMoveInput();
         InitWheelPropertys();
         Stop();
-        RotateSteer();
     }
 
     private void InitWheelPropertys()
@@ -67,17 +66,17 @@ public class WheelController : MonoBehaviour
         //오른쪽 핸들의 Trigger를 눌렀을 때 앞으로 가게 한다.
         currentAcceleration = acceleration * rightAcceleration * 2;
         //핸들을 잡았을 때 두 수평 값을 가져온다.
-        currentTurnAngle = maxTurnAngle * vector2.x;
+        //currentTurnAngle = maxTurnAngle * vector2.x;
     }
 
-    public void RotateSteer()
-    {
-        //핸들 방향을 z축으로 부드럽게 회전시킨다.
-        float angle = Mathf.SmoothDampAngle(handle.eulerAngles.z, -currentTurnAngle * 6, ref rotationVelocity, rotationTime);
+    /*    public void RotateSteer()
+        {
+            //핸들 방향을 z축으로 부드럽게 회전시킨다.
+            float angle = Mathf.SmoothDampAngle(handle.eulerAngles.z, -currentTurnAngle * 6, ref rotationVelocity, rotationTime);
 
-        //핸들의 회전값을 적용한다.
-        handle.localRotation = Quaternion.Euler(0f, 0f, angle);
-    }
+            //핸들의 회전값을 적용한다.
+            handle.localRotation = Quaternion.Euler(0f, 0f, angle);
+        }*/
 
     //부모가 널이 되지 않게 만든다.
     public void FixParent() => handle.SetParent(transform);
