@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class WheelController : MonoBehaviour
 {
@@ -21,7 +23,6 @@ public class WheelController : MonoBehaviour
         InitMoveInput();
         InitWheelPropertys();
         Stop();
-        Accerate();
         RotateSteer();
     }
 
@@ -45,20 +46,31 @@ public class WheelController : MonoBehaviour
     private void Stop()
     {
         //VR 왼쪽 핸들의 Trigger를 눌렀을 때
-        if (Input.GetKey(KeyCode.Space)) currentBreakForce = breakingForce;
+        if (leftStop) currentBreakForce = breakingForce;
+        else currentBreakForce = 0f;
     }
 
-    private void Accerate() => currentBreakForce = 0f;
+    public XRController xrLeftController;
+    public XRController xrRightController;
+
+    private bool leftStop;
+    private float rightAcceleration;
+    private Vector2 vector2;
 
     private void InitMoveInput()
     {
+        xrLeftController.inputDevice.TryGetFeatureValue(CommonUsages.triggerButton, out leftStop);
+
+        xrRightController.inputDevice.TryGetFeatureValue(CommonUsages.trigger, out rightAcceleration);
+
+        //xrLeftController.inputDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out vector2);
         //오른쪽 핸들의 Trigger를 눌렀을 때 앞으로 가게 한다.
-        currentAcceleration = acceleration * Input.GetAxis("Vertical");
+        currentAcceleration = acceleration * rightAcceleration * 2;
         //핸들을 잡았을 때 두 수평 값을 가져온다.
-        currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
+        currentTurnAngle = maxTurnAngle * vector2.x;
     }
 
-    private void RotateSteer()
+    public void RotateSteer()
     {
         //핸들 방향을 z축으로 부드럽게 회전시킨다.
         float angle = Mathf.SmoothDampAngle(handle.eulerAngles.z, -currentTurnAngle * 6, ref rotationVelocity, rotationTime);
@@ -66,4 +78,7 @@ public class WheelController : MonoBehaviour
         //핸들의 회전값을 적용한다.
         handle.localRotation = Quaternion.Euler(0f, 0f, angle);
     }
+
+    //부모가 널이 되지 않게 만든다.
+    public void FixParent() => handle.SetParent(transform);
 }
