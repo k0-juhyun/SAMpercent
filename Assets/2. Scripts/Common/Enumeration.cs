@@ -12,4 +12,10 @@ public class Enumeration : MonoBehaviour
         eParking,
         eOthers
     }
+
+    public enum HandType
+    {
+        Left,
+        Right
+    }
 }
