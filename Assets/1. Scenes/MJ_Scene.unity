@@ -16965,7 +16965,19 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6698799950107880911}
+        m_TargetAssemblyTypeName: WheelController, Assembly-CSharp
+        m_MethodName: FixParent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -18575,7 +18587,6 @@ MonoBehaviour:
   breakingForce: 300
   maxTurnAngle: 15
   handle: {fileID: 1737752948977308698}
-  rotationTime: 1
   xrLeftController: {fileID: 1037683522}
   xrRightController: {fileID: 1951914051}
 --- !u!33 &6711977832429109533
@@ -21490,7 +21501,6 @@ MonoBehaviour:
   breakingForce: 300
   maxTurnAngle: 15
   handle: {fileID: 0}
-  rotationTime: 1
   xrLeftController: {fileID: 0}
   xrRightController: {fileID: 0}
 --- !u!4 &7805851947042560165
