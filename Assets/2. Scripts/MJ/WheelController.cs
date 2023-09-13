@@ -60,6 +60,8 @@ public class WheelController : MonoBehaviour
         xrRightController.inputDevice.TryGetFeatureValue(CommonUsages.trigger, out rightAcceleration);
 
         currentAcceleration = acceleration * rightAcceleration * 2;
+
+        //핸들의 z축 회전 각도에 따른 바퀴 각도를 돌린다.
     }
 
     //부모가 널이 되지 않게 만든다.
