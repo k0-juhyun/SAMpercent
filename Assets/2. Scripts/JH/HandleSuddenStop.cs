@@ -5,6 +5,7 @@ using UnityEngine;
 public class HandleSuddenStop : MonoBehaviour
 {
     private JHCarTest carTest;
+    private WheelController wheelController;
 
     private int suddenStopScore = 10;
 
@@ -18,12 +19,13 @@ public class HandleSuddenStop : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         carTest = other.GetComponentInParent<JHCarTest>();
+        wheelController = other.GetComponent<WheelController>();
 
-        if (carTest.isBreak)
+        if (wheelController.leftStop)
             isBreakPushed = true;
         
         // 2 초이내에 브레이크를 누르지못한 경우
-        while (!carTest.isBreak && breakLimitTime > 0 && !isBreakPushed)
+        while (!wheelController.leftStop && breakLimitTime > 0 && !isBreakPushed)
         {
             breakLimitTime -= Time.deltaTime;
 
@@ -36,7 +38,7 @@ public class HandleSuddenStop : MonoBehaviour
         }
 
         // 정지 후 3초 이내에 비상깜빡이 키지 않은 경우
-        if (carTest.isBreak)
+        if (wheelController.leftStop)
         {
             while (!carTest.isHazardWarningLight && lightLimitTime > 0)
             {

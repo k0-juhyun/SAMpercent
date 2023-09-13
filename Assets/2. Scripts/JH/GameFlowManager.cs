@@ -12,7 +12,7 @@ using UnityEngine;
 public class GameFlowManager : MonoBehaviour
 {
     private JHCarTest car;
-
+    private WheelController wheelController;
 
     private WaitForSeconds updateCoroutine;
     private WaitForSeconds delay;
@@ -36,6 +36,8 @@ public class GameFlowManager : MonoBehaviour
     private void Awake()
     {
         car = FindObjectOfType<JHCarTest>();
+        wheelController = FindObjectOfType<WheelController>();
+
         updateCoroutine = new WaitForSeconds(1);
 
         StartCoroutine(HandleFlow());
@@ -218,7 +220,7 @@ public class GameFlowManager : MonoBehaviour
         // 사이드 브레이크 해제
         // 기어 D
         // 좌측 깜빡이 키고
-        if (car.isSideBreak == false && car.isBreak 
+        if (car.isSideBreak == false && wheelController.leftStop 
             && car.isleftTurnSignalLight)
         {
             print("주행 준비 완료");

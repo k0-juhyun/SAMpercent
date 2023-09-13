@@ -50,7 +50,7 @@ public class WheelController : MonoBehaviour
     public XRController xrLeftController;
     public XRController xrRightController;
 
-    private bool leftStop;
+    public bool leftStop;
     private float rightAcceleration;
 
     private void InitMoveInput()

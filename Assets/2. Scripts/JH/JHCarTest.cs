@@ -7,7 +7,6 @@ public class JHCarTest : MonoBehaviour
     public float movePower;
 
     public bool isStartUp;
-    public bool isBreak;
     public bool isHazardWarningLight;
     public bool isleftTurnSignalLight;
     public bool gaerP;
@@ -56,17 +55,6 @@ public class JHCarTest : MonoBehaviour
         rightTurnSignalLight.SetActive(gaerP);
 
         #region ±Ù∫˝¿ÃµÈ
-        if (Input.GetKey(KeyCode.Space))
-        {
-            isBreak = true;
-            print("∫Í∑π¿Ã≈©");
-        }
-
-        else
-        {
-            isBreak = false;
-        }
-
         if (Input.GetKeyDown(KeyCode.F1) && isHazardWarningLight == false)
         {
             isHazardWarningLight = true;

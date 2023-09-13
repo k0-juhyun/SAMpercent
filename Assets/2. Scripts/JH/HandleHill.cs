@@ -7,22 +7,18 @@ using UnityEngine;
 // 경사로에서 브레이크 밟으면서 내려가기
 public class HandleHill : MonoBehaviour
 {
-    JHCarTest carTest;
-
+    private WheelController wheelController;
     // 정지 시간
     private float stopTime = 4;
 
     private int hillScore = 5;
 
-    private void Awake()
-    {
-        carTest = FindObjectOfType<JHCarTest>();
-    }
-
     private void OnTriggerStay(Collider other)
     {
+        wheelController = other.GetComponent<WheelController>();
+
         // 4초 동안 정지해야한다
-        while (stopTime > 0 && carTest.isBreak)
+        while (stopTime > 0 && wheelController.leftStop)
         {
             stopTime -= Time.deltaTime;
 
