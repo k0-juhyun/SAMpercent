@@ -1604,8 +1604,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2080229423551271106}
+  - {fileID: 2066278510}
   - {fileID: 1127069208}
+  - {fileID: 2080229423551271106}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1659,58 +1660,10 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1127069209}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1518453295}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1127069209}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1518453295}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
@@ -3180,12 +3133,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1127069207}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1127069209 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100054, guid: d7619b16d46dfb441a9da54584d3b94d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1127069207}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1226331375
 GameObject:
   m_ObjectHideFlags: 0
@@ -4373,6 +4320,74 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2066278509
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 678045872}
+    m_Modifications:
+    - target: {fileID: 100054, guid: a09d114f31a6ce146b23129d04c89fe1, type: 3}
+      propertyPath: m_Name
+      value: l_hand_Model2020
+      objectReference: {fileID: 0}
+    - target: {fileID: 400054, guid: a09d114f31a6ce146b23129d04c89fe1, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400054, guid: a09d114f31a6ce146b23129d04c89fe1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0081
+      objectReference: {fileID: 0}
+    - target: {fileID: 400054, guid: a09d114f31a6ce146b23129d04c89fe1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1803
+      objectReference: {fileID: 0}
+    - target: {fileID: 400054, guid: a09d114f31a6ce146b23129d04c89fe1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0116
+      objectReference: {fileID: 0}
+    - target: {fileID: 400054, guid: a09d114f31a6ce146b23129d04c89fe1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400054, guid: a09d114f31a6ce146b23129d04c89fe1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400054, guid: a09d114f31a6ce146b23129d04c89fe1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400054, guid: a09d114f31a6ce146b23129d04c89fe1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400054, guid: a09d114f31a6ce146b23129d04c89fe1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400054, guid: a09d114f31a6ce146b23129d04c89fe1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400054, guid: a09d114f31a6ce146b23129d04c89fe1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700000, guid: a09d114f31a6ce146b23129d04c89fe1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b2c68151160a24d4fbd8ecc5c2af5c0d, type: 2}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: a09d114f31a6ce146b23129d04c89fe1, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: a09d114f31a6ce146b23129d04c89fe1, type: 3}
+--- !u!4 &2066278510 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400054, guid: a09d114f31a6ce146b23129d04c89fe1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2066278509}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2069652675
 GameObject:
   m_ObjectHideFlags: 0
@@ -9238,7 +9253,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 678045872}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2100456841227557822
 Transform:
