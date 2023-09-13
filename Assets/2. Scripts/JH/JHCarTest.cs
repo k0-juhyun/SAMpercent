@@ -20,10 +20,6 @@ public class JHCarTest : MonoBehaviour
     public bool isSideBreak = true;
     public bool isEnd;
 
-    public GameObject hazardWarningLight;
-    public GameObject leftTurnSignalLight;
-    public GameObject rightTurnSignalLight;
-
     private Rigidbody rb;
     
     private void Awake()
@@ -50,10 +46,6 @@ public class JHCarTest : MonoBehaviour
 
     private void Update()
     {
-        hazardWarningLight.SetActive(isHazardWarningLight);
-        leftTurnSignalLight.SetActive(isleftTurnSignalLight);
-        rightTurnSignalLight.SetActive(gaerP);
-
         #region ฑ๔บýภฬต้
         if (Input.GetKeyDown(KeyCode.F1) && isHazardWarningLight == false)
         {

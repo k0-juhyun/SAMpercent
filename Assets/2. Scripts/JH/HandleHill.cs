@@ -15,8 +15,9 @@ public class HandleHill : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        wheelController = other.GetComponent<WheelController>();
+        wheelController = other.GetComponentInParent<WheelController>();
 
+        print(other.gameObject.name);
         // 4초 동안 정지해야한다
         while (stopTime > 0 && wheelController.leftStop)
         {
