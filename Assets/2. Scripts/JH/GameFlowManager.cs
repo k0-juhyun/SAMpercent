@@ -41,6 +41,10 @@ public class GameFlowManager : MonoBehaviour
         StartCoroutine(HandleFlow());
     }
 
+    private void Start()
+    {
+        
+    }
     // 다음 상태로 넘어가는 함수
     private void StartNextFlow()
     {

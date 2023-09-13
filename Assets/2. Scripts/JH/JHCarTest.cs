@@ -10,7 +10,7 @@ public class JHCarTest : MonoBehaviour
     public bool isBreak;
     public bool isHazardWarningLight;
     public bool isleftTurnSignalLight;
-    public bool isrightTurnSignalLight;
+    public bool gaerP;
     public bool isIn1stLine;
     public bool isIn2ndLine;
     public bool isSeatBelt;
@@ -53,7 +53,7 @@ public class JHCarTest : MonoBehaviour
     {
         hazardWarningLight.SetActive(isHazardWarningLight);
         leftTurnSignalLight.SetActive(isleftTurnSignalLight);
-        rightTurnSignalLight.SetActive(isrightTurnSignalLight);
+        rightTurnSignalLight.SetActive(gaerP);
 
         #region ±ôºýÀÌµé
         if (Input.GetKey(KeyCode.Space))
@@ -91,15 +91,15 @@ public class JHCarTest : MonoBehaviour
             print("ÁÂÈ¸Àü ±ôºýÀÌ ²û");
         }
 
-        if (Input.GetKeyDown(KeyCode.F3) && isrightTurnSignalLight == false)
+        if (Input.GetKeyDown(KeyCode.F3) && gaerP == false)
         {
-            isrightTurnSignalLight = true;
+            gaerP = true;
             print("¿ìÈ¸Àü ±ôºýÀÌ ÄÔ");
         }
 
-        else if (Input.GetKeyDown(KeyCode.F3) && isrightTurnSignalLight)
+        else if (Input.GetKeyDown(KeyCode.F3) && gaerP)
         {
-            isrightTurnSignalLight = false;
+            gaerP = false;
             print("¿ìÈ¸Àü ±ôºýÀÌ ²û");
         }
 

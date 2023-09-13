@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class HandleTrafficLight : MonoBehaviour
@@ -14,9 +15,11 @@ public class HandleTrafficLight : MonoBehaviour
         private float greenLightInterval = 15f; // 초록불 시간 (15초)
         private float yellowLightInterval = 2f; // 노랑불 시간 (2초)
         private float redLightInterval = 15f; // 빨간불 시간 (15초)
+        private string objectName;
 
-        public TrafficLight()
+        public TrafficLight(string name)
         {
+            objectName = name;
             // 초기에 초록불로 시작
             greenLight = true;
             leftTurnLight = true;
@@ -86,7 +89,7 @@ public class HandleTrafficLight : MonoBehaviour
         trafficLights = new TrafficLight[4];
         for (int i = 0; i < trafficLights.Length; i++)
         {
-            trafficLights[i] = new TrafficLight();
+            trafficLights[i] = new TrafficLight(gameObject.name + " " + i);
         }
     }
 

@@ -23,7 +23,7 @@ public class HandleChangeLine : MonoBehaviour
             leftTurnLight = 
                 other.gameObject.GetComponent<JHCarTest>().isleftTurnSignalLight;
             rightTurnLight = 
-                other.gameObject.GetComponent<JHCarTest>().isrightTurnSignalLight;
+                other.gameObject.GetComponent<JHCarTest>().gaerP;
             isIn1stLine =
                 other.gameObject.GetComponent<JHCarTest>().isIn1stLine;
             isIn2ndLine =
