@@ -7,19 +7,23 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class XR_Hand : MonoBehaviour
 {
     #region Public Variables
+
     public InputDeviceCharacteristics controllerType;
     public GameObject handModelPrefab;
     public bool showCont = false;
-    #endregion
+
+    #endregion Public Variables
 
     #region Private Variables
+
     private InputDevice cont;
     private Animator handAni;
     private bool _isControllerFound;
     private GameObject spawnedHandModel;
-    #endregion
 
-    void Init()
+    #endregion Private Variables
+
+    private void Init()
     {
         List<InputDevice> xrDevices = new List<InputDevice>();
         InputDevices.GetDevicesWithCharacteristics(controllerType, xrDevices);
@@ -40,7 +44,7 @@ public class XR_Hand : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         if (!_isControllerFound)
         {
@@ -52,7 +56,7 @@ public class XR_Hand : MonoBehaviour
         }
     }
 
-    void UpdateHandAni()
+    private void UpdateHandAni()
     {
         if (cont.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
         {

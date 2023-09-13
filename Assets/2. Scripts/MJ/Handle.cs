@@ -15,16 +15,6 @@ public class Handle : XRBaseInteractable
     public float rotationTime = 1f;
     private float rotationVelocity;
 
-    protected override void OnHoverEntered(HoverEnterEventArgs args)
-    {
-        base.OnHoverEntered(args);
-    }
-
-    protected override void OnHoverExited(HoverExitEventArgs args)
-    {
-        base.OnHoverExited(args);
-    }
-
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         base.OnSelectEntered(args);
