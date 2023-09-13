@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class WheelController : MonoBehaviour
 {
@@ -13,14 +15,12 @@ public class WheelController : MonoBehaviour
     private float currentAcceleration = 0f, currentBreakForce = 0f, currentTurnAngle;
 
     public Transform handle;
-    private float rotationVelocity;
-    public float rotationTime = 1f;
 
     public void FixedUpdate()
     {
         InitMoveInput();
         InitWheelPropertys();
-        StopPedal();
+        Stop();
     }
 
     private void InitWheelPropertys()
@@ -40,30 +40,28 @@ public class WheelController : MonoBehaviour
         }
     }
 
-    private void StopPedal()
+    private void Stop()
     {
         //VR 왼쪽 핸들의 Trigger를 눌렀을 때
-        if (Input.GetKey(KeyCode.Space))
-        {
-            currentBreakForce = breakingForce;
-        }
-        else
-        {
-            currentBreakForce = 0f;
-        }
+        if (leftStop) currentBreakForce = breakingForce;
+        else currentBreakForce = 0f;
     }
+
+    public XRController xrLeftController;
+    public XRController xrRightController;
+
+    private bool leftStop;
+    private float rightAcceleration;
 
     private void InitMoveInput()
     {
-        //오른쪽 핸들의 Trigger를 눌렀을 때 앞으로 가게 한다.
-        currentAcceleration = acceleration * Input.GetAxis("Vertical");
-        //핸들을 잡았을 때 두 수평 값을 가져온다.
-        currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
+        xrLeftController.inputDevice.TryGetFeatureValue(CommonUsages.triggerButton, out leftStop);
 
-        //핸들 방향을 z축으로 부드럽게 회전시킨다.
-        float angle = Mathf.SmoothDampAngle(handle.eulerAngles.z, -currentTurnAngle * 6, ref rotationVelocity, rotationTime);
+        xrRightController.inputDevice.TryGetFeatureValue(CommonUsages.trigger, out rightAcceleration);
 
-        //핸들의 회전값을 적용한다.
-        handle.localRotation = Quaternion.Euler(0f, 0f, angle);
+        currentAcceleration = acceleration * rightAcceleration * 2;
     }
+
+    //부모가 널이 되지 않게 만든다.
+    public void FixParent() => handle.SetParent(transform);
 }
