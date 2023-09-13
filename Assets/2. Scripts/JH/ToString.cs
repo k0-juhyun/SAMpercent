@@ -6,15 +6,15 @@ using UnityEngine.UI;
 
 public class ToString : MonoBehaviour
 {
-    ScoreManager scoreManager;
+    ScoreManager scoreHandler;
     public Text text;
 
     private void Awake()
     {
-        scoreManager = FindObjectOfType<ScoreManager>();
+        scoreHandler = FindObjectOfType<ScoreManager>();
     }
     void Update()
     {
-        text.text = scoreManager.Score.ToString();
+        text.text = scoreHandler.Score.ToString();
     }
 }
