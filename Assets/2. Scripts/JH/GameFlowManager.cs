@@ -13,13 +13,9 @@ public class GameFlowManager : MonoBehaviour
 {
     private JHCarTest car;
 
-    private AudioSource audioSource;
 
     private WaitForSeconds updateCoroutine;
     private WaitForSeconds delay;
-
-    // 오디오 클립들
-    public AudioClip[] comments;
 
     public enum LicenseFlow
     {
@@ -40,34 +36,20 @@ public class GameFlowManager : MonoBehaviour
     private void Awake()
     {
         car = FindObjectOfType<JHCarTest>();
-        audioSource = GetComponent<AudioSource>();
         updateCoroutine = new WaitForSeconds(1);
 
         StartCoroutine(HandleFlow());
     }
 
-    // 오디오 클립 재생 함수
-    private IEnumerator PlaySFX(int clipNum)
+    private void Start()
     {
-        audioSource.clip = comments[clipNum];
-        audioSource.Play();
-        print(clipNum + ": 번 클립 재생");
-
-        // 클립 재생이 끝날 때까지 대기
-        yield return new WaitForSeconds(audioSource.clip.length);
+        
     }
-
     // 다음 상태로 넘어가는 함수
     private void StartNextFlow()
     {
         // 다음 상태로 이동
         licenseFlow++;
-
-        // 만약 마지막 상태에 도달하면 플로우를 초기 상태로 리셋
-        //if (licenseFlow == LicenseFlow.StartDrive)
-        //{
-        //    licenseFlow = LicenseFlow.GuideMent;
-        //}
     }
 
     // 플로우 진행 코루틴
@@ -81,8 +63,8 @@ public class GameFlowManager : MonoBehaviour
             {
                 case LicenseFlow.GuideMent:
                     print("가이드 플로우");
-                    yield return StartCoroutine(PlaySFX(0));
-                    StartNextFlow();
+                    yield return StartCoroutine(SoundManager.Instance.PlaySFX(0));
+                    licenseFlow++;
                     break;
                 case LicenseFlow.SeatBelt:
                     print("안전벨트 플로우");
@@ -126,8 +108,8 @@ public class GameFlowManager : MonoBehaviour
         if (car.isSeatBelt)
         {
             print("안전벨트 완료");
-            yield return StartCoroutine(PlaySFX(1));
-            yield return StartCoroutine(PlaySFX(2));
+            yield return StartCoroutine(SoundManager.Instance.PlaySFX(1));
+            yield return StartCoroutine(SoundManager.Instance.PlaySFX(2));
             StartNextFlow();
         }
     }
@@ -152,8 +134,10 @@ public class GameFlowManager : MonoBehaviour
         if (car.isStartUp)
         {
             print("시동걸기 완료");
-            yield return StartCoroutine(PlaySFX(1));
-            yield return StartCoroutine(PlaySFX(3));
+            yield return StartCoroutine
+                (SoundManager.Instance.PlaySFX(1));
+            yield return StartCoroutine
+                (SoundManager.Instance.PlaySFX(3));
             StartNextFlow();
         }
     }
@@ -164,8 +148,10 @@ public class GameFlowManager : MonoBehaviour
         if (car.isHeadLight)
         {
             print("전조등 켜기 완료");
-            yield return StartCoroutine(PlaySFX(1));
-            yield return StartCoroutine(PlaySFX(4));
+            yield return StartCoroutine
+                (SoundManager.Instance.PlaySFX(1));
+            yield return StartCoroutine
+                (SoundManager.Instance.PlaySFX(4));
             StartNextFlow();
         }
     }
@@ -176,8 +162,10 @@ public class GameFlowManager : MonoBehaviour
         if (car.isHightBeam)
         {
             print("상향등 켜기 완료");
-            yield return StartCoroutine(PlaySFX(1));
-            yield return StartCoroutine(PlaySFX(5));
+            yield return StartCoroutine
+                (SoundManager.Instance.PlaySFX(1));
+            yield return StartCoroutine
+                (SoundManager.Instance.PlaySFX(5));
             StartNextFlow();
         }
     }
@@ -189,8 +177,10 @@ public class GameFlowManager : MonoBehaviour
         if (car.isLowBeam && car.isHeadLight == false)
         {
             print("하향등 켜, 전조등 끄기 완료");
-            yield return StartCoroutine(PlaySFX(1));
-            yield return StartCoroutine(PlaySFX(6));
+            yield return StartCoroutine
+                (SoundManager.Instance.PlaySFX(1));
+            yield return StartCoroutine
+                (SoundManager.Instance.PlaySFX(6));
             StartNextFlow();
         }
     }
@@ -201,8 +191,10 @@ public class GameFlowManager : MonoBehaviour
         if (car.isWiper)
         {
             print("와이퍼 켜기 완료");
-            yield return StartCoroutine(PlaySFX(1));
-            yield return StartCoroutine(PlaySFX(7));
+            yield return StartCoroutine
+                (SoundManager.Instance.PlaySFX(1));
+            yield return StartCoroutine
+                (SoundManager.Instance.PlaySFX(7));
             StartNextFlow();
         }
     }
@@ -212,8 +204,10 @@ public class GameFlowManager : MonoBehaviour
         if (car.isWiper == false)
         {
             print("와이퍼 끄기 완료");
-            yield return StartCoroutine(PlaySFX(1));
-            yield return StartCoroutine(PlaySFX(8));
+            yield return StartCoroutine
+                (SoundManager.Instance.PlaySFX(1));
+            yield return StartCoroutine
+                (SoundManager.Instance.PlaySFX(8));
             StartNextFlow();
         }
     }
@@ -224,10 +218,12 @@ public class GameFlowManager : MonoBehaviour
         // 사이드 브레이크 해제
         // 기어 D
         // 좌측 깜빡이 키고
-        if (car.isSideBreak == false && car.isBreak && car.isleftTurnSignalLight)
+        if (car.isSideBreak == false && car.isBreak 
+            && car.isleftTurnSignalLight)
         {
             print("주행 준비 완료");
-            yield return StartCoroutine(PlaySFX(1));
+            yield return StartCoroutine
+                (SoundManager.Instance.PlaySFX(1));
             StartNextFlow();
         }
     }

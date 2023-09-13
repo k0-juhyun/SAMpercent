@@ -6,9 +6,10 @@ using UnityEngine;
 public class PlayerInfo : MonoBehaviour
 {
     public static PlayerInfo instance;
+
     // 현재 컨트롤러가 잡고 있는 오브젝트 저장
     public PlayerHandsData playerHandsObj;
-    
+
     private void Awake()
     {
         if (instance != null) Destroy(instance);
@@ -16,17 +17,18 @@ public class PlayerInfo : MonoBehaviour
         AddEvent();
     }
 
-    void OnDestory()
+    private void OnDestory()
     {
         RemoveEvent();
     }
 
-    void AddEvent()
+    private void AddEvent()
     {
         // 구현 예정
         //SAMPRO_EventManager.instance
     }
-    void RemoveEvent()
+
+    private void RemoveEvent()
     {
         // 구현 예정
         //SAMPRO_EventManager.instance
@@ -38,9 +40,7 @@ public class PlayerHandsData
 {
     // 왼손이 잡고 있는 오브젝트
     public GameObject leftHand_Obj;
+
     // 오른손이 잡고 있는 오브젝트
     public GameObject rightHand_Obj;
 }
-
-
-
