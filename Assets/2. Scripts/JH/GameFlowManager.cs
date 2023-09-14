@@ -220,7 +220,7 @@ public class GameFlowManager : MonoBehaviour
         // 사이드 브레이크 해제
         // 기어 D
         // 좌측 깜빡이 키고
-        if (car.isSideBreak == false && wheelController.leftStop 
+        if (car.isSideBreak == false && car.isBreak 
             && car.isleftTurnSignalLight)
         {
             print("주행 준비 완료");

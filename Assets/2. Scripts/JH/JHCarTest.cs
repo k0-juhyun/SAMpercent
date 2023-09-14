@@ -19,6 +19,7 @@ public class JHCarTest : MonoBehaviour
     public bool isWiper;
     public bool isSideBreak = true;
     public bool isEnd;
+    public bool isBreak;
 
     private Rigidbody rb;
     
@@ -37,16 +38,18 @@ public class JHCarTest : MonoBehaviour
         rb.AddForce(moveDirection * movePower);
 
         print(moveDirection);
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            rb.velocity = Vector3.zero;
-        }
     }
 
     private void Update()
     {
         #region ±Ù∫˝¿ÃµÈ
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            print("∫Í∑π¿Ã≈©");
+            rb.velocity = Vector3.zero;
+        }
+
         if (Input.GetKeyDown(KeyCode.F1) && isHazardWarningLight == false)
         {
             isHazardWarningLight = true;
