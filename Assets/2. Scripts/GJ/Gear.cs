@@ -6,32 +6,28 @@ public class Gear : MonoBehaviour
 {
     public List<Collider> gearList;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider col)
     {
-        Debug.Log("hi");
-
+        // 주행 Drive
         if (col == gearList[0])
         {
-            Debug.Log("gear");
             SAMPRO_EventManager.instance.RunEvent(Enumeration.GearEventType.eDrive);
+        }
+        // 후진 Reverse
+        else if(col == gearList[1])
+        {
+            SAMPRO_EventManager.instance.RunEvent(Enumeration.GearEventType.eReverse);
+        }
+        // 중립 Neutral
+        else if (col == gearList[2])
+        {
+            SAMPRO_EventManager.instance.RunEvent(Enumeration.GearEventType.eNeutral);
+        } // 주차 Parking
+        else if (col == gearList[3])
+        {
+            SAMPRO_EventManager.instance.RunEvent(Enumeration.GearEventType.eParking);
         }
     }
 
-    public void SetDriveEvent(Enumeration.GearEventType gearEventType)
-    {
-
-    }
 
 }

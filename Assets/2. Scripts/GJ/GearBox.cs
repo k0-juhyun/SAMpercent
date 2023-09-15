@@ -49,15 +49,18 @@ public class GearBox : MonoBehaviour
     public void onReverse()
     {
         gearType = Enumeration.GearEventType.eReverse;
+        Debug.Log("Reverse");
     }
 
     public void onNeutral()
     {
         gearType = Enumeration.GearEventType.eNeutral;
+        Debug.Log("Neutral");
     }
 
     public void onParking()
     {
         gearType = Enumeration.GearEventType.eParking;
+        Debug.Log("Parking");
     }
 }
