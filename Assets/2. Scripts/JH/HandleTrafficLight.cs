@@ -15,8 +15,9 @@ public class HandleTrafficLight : MonoBehaviour
     private TrafficLightState state1 = TrafficLightState.Green;
     private TrafficLightState state2 = TrafficLightState.Red;
 
-    private float greenLightDuration = 15f; // 초록불 지속 시간 (15초)
+    private float greenLightDuration = 13f; // 초록불 지속 시간 (15초)
     private float yellowLightDuration = 2f; // 노랑불 지속 시간 (2초)
+    private float redLightDuration = 15f; // 노랑불 지속 시간 (2초)
 
     private float timer1 = 0f;
     private float timer2 = 0f;
@@ -71,7 +72,7 @@ public class HandleTrafficLight : MonoBehaviour
                 }
                 break;
             case TrafficLightState.Red:
-                if (timer1 >= greenLightDuration)
+                if (timer1 >= redLightDuration)
                 {
                     state1 = TrafficLightState.Green;
                     timer1 = 0f;
@@ -116,7 +117,7 @@ public class HandleTrafficLight : MonoBehaviour
                 }
                 break;
             case TrafficLightState.Red:
-                if (timer2 >= greenLightDuration)
+                if (timer2 >= redLightDuration)
                 {
                     state2 = TrafficLightState.Green;
                     timer2 = 0f;
