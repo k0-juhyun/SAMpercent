@@ -22,8 +22,9 @@ public class Gear : MonoBehaviour
     {
         Debug.Log("hi");
 
-        if (gearList[0])
+        if (col == gearList[0])
         {
+            Debug.Log("gear");
             SAMPRO_EventManager.instance.RunEvent(Enumeration.GearEventType.eDrive);
         }
     }
