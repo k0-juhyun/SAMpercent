@@ -15,16 +15,17 @@ public class HandleHill : MonoBehaviour
     private int hillScore = 5;
     private void OnTriggerStay(Collider other)
     {
-        carTest = other.GetComponentInParent<JHCarTest>();
-        if (carTest == null)
-            return;
-        wheelController = other.GetComponentInParent<WheelController>();
+        //carTest = other.GetComponentInParent<JHCarTest>();
+        //if (carTest == null)
+        //    return;
 
-        print(other.gameObject.name);
+        wheelController = other.GetComponentInParent<WheelController>();
+        if (wheelController == null)
+            return;
 
         // wheelController.leftstop
         // 4초 동안 정지해야한다
-        while (stopTime > 0 && carTest.isBreak)
+        while (stopTime > 0 && wheelController.leftStop)
         {
             stopTime -= Time.deltaTime;
 
@@ -35,10 +36,5 @@ public class HandleHill : MonoBehaviour
             }
             break;
         }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        print(collision.gameObject.name);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,13 +22,16 @@ public class HandleSuddenStop : MonoBehaviour
         carTest = other.GetComponentInParent<JHCarTest>();
         wheelController = other.GetComponentInParent<WheelController>();
 
+        if (wheelController == null)
+            return;
+
         // wheelController.leftstop 으로 교체할 것
-        if (carTest.isBreak)
+        if (wheelController.leftStop)
             isBreakPushed = true;
         
         // 2 초이내에 브레이크를 누르지못한 경우
         // wheelController.leftstop 으로 교체할것
-        while (!carTest.isBreak && breakLimitTime > 0 && !isBreakPushed)
+        while (!wheelController.leftStop && breakLimitTime > 0 && !isBreakPushed)
         {
             breakLimitTime -= Time.deltaTime;
 
@@ -40,7 +44,7 @@ public class HandleSuddenStop : MonoBehaviour
         }
 
         // 정지 후 3초 이내에 비상깜빡이 키지 않은 경우
-        if (carTest.isBreak)
+        if (wheelController.leftStop)
         {
             print("호출1");
             while (!carTest.isHazardWarningLight && lightLimitTime > 0)
