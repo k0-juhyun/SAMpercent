@@ -70,3 +70,10 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+Assets/VRHandle/VRHandleScene.unity.meta
+Assets/VRHandle/VRHandleScene.unity
+Assets/VRHandle/Mat.mat.meta
+Assets/VRHandle/Mat.mat
+Assets/VRHandle/Handles.cs.meta
+Assets/VRHandle/Handles.cs
+Assets/VRHandle.meta
