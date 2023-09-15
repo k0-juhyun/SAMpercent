@@ -105,7 +105,7 @@ public class Handle : XRBaseInteractable
         totalRotateAngle += angle;
 
         //z축 기준으로 0도 부터 총 회전한 각도 각까지 Slerp로 부드럽게 회전한다.
-        handle.localRotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0f, 0f, totalRotateAngle), smoothTime * kAdjust * Time.deltaTime);
+        handle.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(0f, 0f, totalRotateAngle), smoothTime * kAdjust * Time.deltaTime);
 
         grabbedHand = insideHandModel.localPosition.normalized;
     }
