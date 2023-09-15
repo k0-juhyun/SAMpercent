@@ -18664,7 +18664,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movePower: 100
   isStartUp: 0
-  isBreak: 0
   isHazardWarningLight: 0
   isleftTurnSignalLight: 0
   gaerP: 0
@@ -18677,9 +18676,7 @@ MonoBehaviour:
   isWiper: 0
   isSideBreak: 0
   isEnd: 0
-  hazardWarningLight: {fileID: 1157142921}
-  leftTurnSignalLight: {fileID: 158231804}
-  rightTurnSignalLight: {fileID: 1083731373}
+  isBreak: 0
 --- !u!54 &860194888
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20811,7 +20808,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &962552707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20826,7 +20823,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movePower: 100
   isStartUp: 0
-  isBreak: 0
   isHazardWarningLight: 0
   isleftTurnSignalLight: 0
   gaerP: 0
@@ -20839,9 +20835,7 @@ MonoBehaviour:
   isWiper: 0
   isSideBreak: 0
   isEnd: 0
-  hazardWarningLight: {fileID: 1157142921}
-  leftTurnSignalLight: {fileID: 158231804}
-  rightTurnSignalLight: {fileID: 1083731373}
+  isBreak: 0
 --- !u!54 &962552708
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -54533,7 +54527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &3585039236215682732
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -56019,7 +56013,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movePower: 100
   isStartUp: 0
-  isBreak: 0
   isHazardWarningLight: 0
   isleftTurnSignalLight: 0
   gaerP: 0
@@ -56032,9 +56025,7 @@ MonoBehaviour:
   isWiper: 0
   isSideBreak: 0
   isEnd: 0
-  hazardWarningLight: {fileID: 1157142921}
-  leftTurnSignalLight: {fileID: 158231804}
-  rightTurnSignalLight: {fileID: 1083731373}
+  isBreak: 0
 --- !u!54 &4190130680905468699
 Rigidbody:
   m_ObjectHideFlags: 0

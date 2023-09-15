@@ -12,7 +12,7 @@ using UnityEngine;
 public class GameFlowManager : MonoBehaviour
 {
     private JHCarTest car;
-
+    private WheelController wheelController;
 
     private WaitForSeconds updateCoroutine;
     private WaitForSeconds delay;
@@ -36,6 +36,8 @@ public class GameFlowManager : MonoBehaviour
     private void Awake()
     {
         car = FindObjectOfType<JHCarTest>();
+        wheelController = FindObjectOfType<WheelController>();
+
         updateCoroutine = new WaitForSeconds(1);
 
         StartCoroutine(HandleFlow());

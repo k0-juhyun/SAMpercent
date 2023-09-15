@@ -8,6 +8,8 @@ public class ScoreManager : MonoBehaviour
 
     public int Score;
 
+    public bool disqulification;
+
     private void Awake()
     {
         instance = this;
@@ -23,6 +25,11 @@ public class ScoreManager : MonoBehaviour
         if(Score < 80) 
         {
             print("불합격");
+        }
+
+        if(disqulification)
+        {
+            print("실격");
         }
     }
 }

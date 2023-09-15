@@ -7,7 +7,6 @@ public class JHCarTest : MonoBehaviour
     public float movePower;
 
     public bool isStartUp;
-    public bool isBreak;
     public bool isHazardWarningLight;
     public bool isleftTurnSignalLight;
     public bool gaerP;
@@ -20,10 +19,7 @@ public class JHCarTest : MonoBehaviour
     public bool isWiper;
     public bool isSideBreak = true;
     public bool isEnd;
-
-    public GameObject hazardWarningLight;
-    public GameObject leftTurnSignalLight;
-    public GameObject rightTurnSignalLight;
+    public bool isBreak;
 
     private Rigidbody rb;
     
@@ -42,29 +38,16 @@ public class JHCarTest : MonoBehaviour
         rb.AddForce(moveDirection * movePower);
 
         print(moveDirection);
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            rb.velocity = Vector3.zero;
-        }
     }
 
     private void Update()
     {
-        hazardWarningLight.SetActive(isHazardWarningLight);
-        leftTurnSignalLight.SetActive(isleftTurnSignalLight);
-        rightTurnSignalLight.SetActive(gaerP);
-
         #region 깜빡이들
-        if (Input.GetKey(KeyCode.Space))
-        {
-            isBreak = true;
-            print("브레이크");
-        }
 
-        else
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            isBreak = false;
+            print("브레이크");
+            rb.velocity = Vector3.zero;
         }
 
         if (Input.GetKeyDown(KeyCode.F1) && isHazardWarningLight == false)
