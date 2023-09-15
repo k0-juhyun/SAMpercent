@@ -3483,9 +3483,9 @@ GameObject:
   - component: {fileID: 857256234}
   - component: {fileID: 857256233}
   - component: {fileID: 857256232}
-  - component: {fileID: 857256230}
   - component: {fileID: 857256229}
   - component: {fileID: 857256236}
+  - component: {fileID: 857256237}
   m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
@@ -3528,20 +3528,6 @@ MonoBehaviour:
   myCol: {fileID: 0}
   leftHand: {fileID: 0}
   rightHand: {fileID: 0}
---- !u!64 &857256230
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 857256227}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6671263604069315146, guid: 8c44445e9f9209246a0dfb4c8cd3a6e9, type: 3}
 --- !u!59 &857256232
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -3658,7 +3644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
   m_Colliders:
-  - {fileID: 857256230}
+  - {fileID: 857256237}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -3751,6 +3737,19 @@ MonoBehaviour:
   insideHandModel: {fileID: 2030007087}
   totalRotateAngle: 0
   smoothTime: 0.1
+--- !u!135 &857256237
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857256227}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 37.242046
+  m_Center: {x: -0.001033783, y: 3.8617578, z: -6.615186}
 --- !u!1 &877204916
 GameObject:
   m_ObjectHideFlags: 0
@@ -4813,14 +4812,14 @@ MonoBehaviour:
   - {fileID: 1529735018}
   - {fileID: 305484517}
   - {fileID: 1848446497}
-  acceleration: 150
-  breakingForce: 100
+  acceleration: 20
+  breakingForce: 20
   maxTurnAngle: 15
-  rotationRate: 45
-  handle: {fileID: 857256228}
-  handleFrame: {fileID: 1084529600}
+  rotationRate: 90
   xrLeftController: {fileID: 1669789211}
   xrRightController: {fileID: 1654382549}
+  handle: {fileID: 857256228}
+  handleFrame: {fileID: 1084529600}
 --- !u!65 &1140473685
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4848,7 +4847,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 32
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!4 &1140473687
 Transform:
