@@ -18,7 +18,7 @@ public class WheelController : MonoBehaviour
 
     public XRController xrLeftController, xrRightController;
 
-    private bool leftStop;
+    public bool leftStop;
     private float rightAcceleration;
     private Vector2 backAcceleration;
 
