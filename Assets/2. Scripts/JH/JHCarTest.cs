@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class JHCarTest : MonoBehaviour
 {
-    public float movePower;
-
     public bool isStartUp;
     public bool isHazardWarningLight;
     public bool isleftTurnSignalLight;
@@ -21,34 +19,10 @@ public class JHCarTest : MonoBehaviour
     public bool isEnd;
     public bool isBreak;
 
-    private Rigidbody rb;
-    
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
-
-    void FixedUpdate()
-    {
-        float V = Input.GetAxis("Vertical");
-        float H = Input.GetAxis("Horizontal");
-
-        Vector3 moveDirection = new Vector3(V, 0, -H);
-        moveDirection.Normalize();
-        rb.AddForce(moveDirection * movePower);
-
-        print(moveDirection);
-    }
 
     private void Update()
     {
         #region ±Ù∫˝¿ÃµÈ
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            print("∫Í∑π¿Ã≈©");
-            rb.velocity = Vector3.zero;
-        }
 
         if (Input.GetKeyDown(KeyCode.F1) && isHazardWarningLight == false)
         {
