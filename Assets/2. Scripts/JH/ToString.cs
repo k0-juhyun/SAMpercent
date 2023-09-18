@@ -3,18 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ToString : MonoBehaviour
 {
-    ScoreManager scoreHandler;
-    public Text text;
-
-    private void Awake()
-    {
-        scoreHandler = FindObjectOfType<ScoreManager>();
-    }
+    public TextMeshProUGUI text;
     void Update()
     {
-        text.text = scoreHandler.Score.ToString();
+        text.text = ScoreManager.instance.Score.ToString();
     }
 }

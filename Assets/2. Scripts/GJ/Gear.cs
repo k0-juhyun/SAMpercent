@@ -12,7 +12,7 @@ public class Gear : MonoBehaviour
         // 주행 Drive
         if (col == gearList[0])
         {
-            SAMPRO_EventManager.instance.RunEvent(Enumeration.GearEventType.eDrive);
+            SAMPRO_EventManager.instance.RunEvent(Enumeration.GearEventType.eParking);
         }
         // 후진 Reverse
         else if(col == gearList[1])
@@ -26,7 +26,7 @@ public class Gear : MonoBehaviour
         } // 주차 Parking
         else if (col == gearList[3])
         {
-            SAMPRO_EventManager.instance.RunEvent(Enumeration.GearEventType.eParking);
+            SAMPRO_EventManager.instance.RunEvent(Enumeration.GearEventType.eDrive);
         }
     }
 

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -75,17 +74,24 @@ public class WheelController : MonoBehaviour
 
     private void forwardMove()
     {
-        if (PlayerInfo.instance.playerHandsObj.rightHand_Obj.gameObject.name == "Handle" && GearBox.instance.gearType == Enumeration.GearEventType.eDrive)
+        if (PlayerInfo.instance.playerHandsObj.rightHand_Obj != null)
         {
-            currentAcceleration = acceleration * rightAcceleration * 2;
+            if (GearBox.instance.gearType == Enumeration.GearEventType.eDrive && PlayerInfo.instance.playerHandsObj.rightHand_Obj.gameObject.name == handle.name)
+            {
+                currentAcceleration = acceleration * rightAcceleration * 2;
+            }
         }
+
     }
 
     private void backMove()
     {
-        if (PlayerInfo.instance.playerHandsObj.rightHand_Obj.gameObject.name == "Handle" && GearBox.instance.gearType == Enumeration.GearEventType.eReverse)
+        if (PlayerInfo.instance.playerHandsObj.rightHand_Obj != null)
         {
-            currentAcceleration = acceleration * -rightAcceleration * 2;
+            if (GearBox.instance.gearType == Enumeration.GearEventType.eReverse && PlayerInfo.instance.playerHandsObj.rightHand_Obj.gameObject.name == handle.name)
+            {
+                currentAcceleration = acceleration * -rightAcceleration * 2;
+            }
         }
     }
 
