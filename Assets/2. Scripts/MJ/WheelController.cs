@@ -45,9 +45,6 @@ public class WheelController : MonoBehaviour
         xrLeftController.inputDevice.TryGetFeatureValue(CommonUsages.triggerButton, out leftStop);
 
         xrRightController.inputDevice.TryGetFeatureValue(CommonUsages.trigger, out rightAcceleration);
-
-        //오른쪽 컨트롤러의 조이스틱 값
-        xrLeftController.inputDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out backAcceleration);
     }
 
     private void InitWheelPropertys()
@@ -76,14 +73,19 @@ public class WheelController : MonoBehaviour
 
     private void TurnDirection() => currentTurnAngle = maxTurnAngle * -handleScript.totalRotateAngle / rotationRate;
 
-    private void forwardMove() =>
-        currentAcceleration = acceleration * rightAcceleration * 2;
+    private void forwardMove()
+    {
+        if (PlayerInfo.instance.playerHandsObj.rightHand_Obj.gameObject.name == "Handle" && GearBox.instance.gearType == Enumeration.GearEventType.eDrive)
+        {
+            currentAcceleration = acceleration * rightAcceleration * 2;
+        }
+    }
 
     private void backMove()
     {
-        if (backAcceleration.y < 0)
+        if (PlayerInfo.instance.playerHandsObj.rightHand_Obj.gameObject.name == "Handle" && GearBox.instance.gearType == Enumeration.GearEventType.eReverse)
         {
-            currentAcceleration = acceleration * backAcceleration.y * 2;
+            currentAcceleration = acceleration * -rightAcceleration * 2;
         }
     }
 
