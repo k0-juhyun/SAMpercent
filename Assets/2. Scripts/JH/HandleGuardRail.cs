@@ -9,12 +9,13 @@ public class HandleGuardRail : MonoBehaviour
     private JHCarTest carTest;
     // 차로 준수 위반
     // 가드레일에 충돌하면 감점
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        carTest = collision.gameObject.GetComponent<JHCarTest>();
-        if(carTest != null)
+        carTest = other.gameObject.GetComponentInParent<JHCarTest>();
+        if (carTest != null)
         {
-            if(carTest.isStartUp)
+            if (carTest.isStartUp)
             {
                 print("가드레일 충돌 감점");
                 // 감점

@@ -8,12 +8,14 @@ using UnityEngine;
 public class HandleHill : MonoBehaviour
 {
     private WheelController wheelController;
+
     // 정지 시간
     private float stopTime = 4;
 
     private int hillScore = 5;
 
     private bool check;
+
     private void OnTriggerStay(Collider other)
     {
         //carTest = other.GetComponentInParent<JHCarTest>();

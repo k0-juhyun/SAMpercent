@@ -15,7 +15,7 @@ public class Gear : MonoBehaviour
             SAMPRO_EventManager.instance.RunEvent(Enumeration.GearEventType.eParking);
         }
         // ÈÄÁø Reverse
-        else if(col == gearList[1])
+        else if (col == gearList[1])
         {
             SAMPRO_EventManager.instance.RunEvent(Enumeration.GearEventType.eReverse);
         }
@@ -38,6 +38,4 @@ public class Gear : MonoBehaviour
 
         this.transform.localPosition = new Vector3(Mathf.Clamp(this.transform.localPosition.x, -0.0675f, -0.005f), 1.335f, Mathf.Clamp(this.transform.localPosition.z, 0.6125f, 0.845f));
     }
-
-
 }

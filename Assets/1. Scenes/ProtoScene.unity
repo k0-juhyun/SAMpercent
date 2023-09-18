@@ -1468,8 +1468,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.022799173, y: 0.052623115, z: 0.032819062}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.061375305, y: 0.06147077, z: 0.038204167}
+  m_Center: {x: -0.01928806, y: -0.00026022395, z: 0.0026925527}
 --- !u!1 &250128337
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,8 +1750,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.026563007, y: 0.058253355, z: 0.03231046}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.04674912, y: 0.060335178, z: 0.045318626}
+  m_Center: {x: -0.000670754, y: 0.0010409083, z: -0.0006739391}
 --- !u!1 &309475533
 GameObject:
   m_ObjectHideFlags: 0
@@ -4490,7 +4490,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.6522393, y: 0.38827163, z: 0.9291973}
-  m_Center: {x: -0.0036394596, y: 0.23560598, z: 0.024518967}
+  m_Center: {x: -0.0036394596, y: 0.29, z: -0.01}
 --- !u!54 &871232561
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12249,7 +12249,7 @@ MonoBehaviour:
   insideHandModel: {fileID: 718422029}
   totalRotateAngle: 0
   smoothTime: 0.1
-  initRotationTime: 2.5
+  initRotationTime: 1.8
 --- !u!114 &1274194937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12425,6 +12425,7 @@ GameObject:
   - component: {fileID: 1279090964}
   - component: {fileID: 1279090963}
   - component: {fileID: 1279090962}
+  - component: {fileID: 1279090965}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -12568,6 +12569,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1279090965
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279090961}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b8e872255c25e5e429116ef8168d97d1, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.35
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1299736913
 GameObject:
   m_ObjectHideFlags: 0
@@ -15342,8 +15439,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.032577515, y: 0.045924608, z: 0.03845215}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.060838073, y: 0.06205857, z: 0.054728195}
+  m_Center: {x: -0.014130268, y: 0.00026017427, z: -0.008138018}
 --- !u!1 &1732393101
 GameObject:
   m_ObjectHideFlags: 0
@@ -15611,8 +15708,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.8983368, y: 1, z: 1}
+  m_Center: {x: -0.49869454, y: -0.00000087834076, z: 9.746541e-10}
 --- !u!23 &1826591236
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17114,8 +17211,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.026563007, y: 0.058253355, z: 0.03231046}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.030152002, y: 0.05981473, z: 0.03231046}
+  m_Center: {x: 0.00044981638, y: -0.0007806843, z: 0}
 --- !u!1 &2025909399
 GameObject:
   m_ObjectHideFlags: 0
