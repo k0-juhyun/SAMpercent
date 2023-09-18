@@ -20,6 +20,8 @@ public class Handle : XRBaseInteractable
     private readonly float handleRotationSpeed = 300f;
     private readonly int leftRotation = 1;
     private readonly int rightRotation = -1;
+    private float currentTime;
+    public float initRotationTime = 2.5f;
 
     /*   //회전한 각도 이벤트를 저장하는 리스트를 만든다.
        public UnityEvent<float> HandleRotated;
@@ -37,7 +39,7 @@ public class Handle : XRBaseInteractable
         grabbedHand = insideHandModel.localPosition.normalized;
         //원상복구 하는 도중 남은 각도를 원래값으로 되돌리자
         totalRotateAngle *= -directionOfRotation;
-        print("핸들을 선택했다.");
+        //print("핸들을 선택했다.");
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args)
@@ -49,7 +51,7 @@ public class Handle : XRBaseInteractable
 
         //회전각을 절대 값으로 만든다.
         totalRotateAngle = Mathf.Abs(totalRotateAngle);
-        print("핸들을 나갔다.");
+        //print("핸들을 나갔다.");
     }
 
     private void SetInsideHandPosition()
@@ -75,11 +77,13 @@ public class Handle : XRBaseInteractable
             {
                 //3. 핸들을 돌린다.
                 RotateHandle();
-                print("핸들을 돌린다.");
+                //print("핸들을 돌린다.");
             }
             else
             {
-                if (totalRotateAngle != 0)
+                currentTime += Time.deltaTime;
+
+                if (totalRotateAngle != 0 && currentTime > initRotationTime)
                 {
                     handle.Rotate(0, 0, handleRotationSpeed * directionOfRotation * Time.deltaTime);
                     //회전각도 감소 시킨다.
@@ -88,6 +92,7 @@ public class Handle : XRBaseInteractable
                     {
                         totalRotateAngle = 0;
                         handle.localEulerAngles = new Vector3(25, 0, 0);
+                        currentTime = 0f;
                     }
                 }
             }
