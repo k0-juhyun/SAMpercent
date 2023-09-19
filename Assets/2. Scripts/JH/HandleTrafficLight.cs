@@ -179,7 +179,6 @@ public class HandleTrafficLight : MonoBehaviour
     private void SetTrafficLightColor(GameObject trafficLight, Color color, int childIndexToChange)
     {
         Renderer[] renderers = trafficLight.GetComponentsInChildren<Renderer>();
-
         for (int i = 0; i < renderers.Length; i++)
         {
             if (i == childIndexToChange)
