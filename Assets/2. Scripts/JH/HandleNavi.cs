@@ -64,7 +64,7 @@ public class HandleNavi : MonoBehaviour
                     break;
                 case CurrentContent.Hill:
                     StatePerContent(2);
-                    break;q
+                    break;
                 case CurrentContent.TurnLeft:
                     StatePerContent(3);
                     break;
