@@ -54,8 +54,7 @@ public class HandleHill : MonoBehaviour
             ScoreManager.instance.Deduction(hillScore);
             print("언덕 감점");
         }
-
-        // 다음 플로우로 넘어가기
         HandleNavi.instance.HandleNextContent();
+        HandleNavi.instance.currentContent = HandleNavi.CurrentContent.TurnLeft;
     }
 }

@@ -76,6 +76,7 @@ public class JHCarTest : MonoBehaviour
         {
             print("안전 벨트 멤");
             HandleNavi.instance.HandleNextContent();
+            HandleNavi.instance.currentContent = HandleNavi.CurrentContent.Forward;
             isSeatBelt = true;
         }
 

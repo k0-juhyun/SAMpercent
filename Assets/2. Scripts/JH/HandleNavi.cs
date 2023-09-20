@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,11 +11,18 @@ public class HandleNavi : MonoBehaviour
     private HandleTimernScore handleTimernScore;
 
     public RawImage[] flowImages;
+
+    public Texture[] ingTexture;
+    public Texture[] clearTexture;
+    public Texture[] failTexture;
+
     public RawImage currentImage;
 
     private WaitForSeconds updateDelay;
 
     private Vector3 originScale;
+
+    public bool isNext;
 
     // 콘텐츠 enum
     public enum CurrentContent
@@ -82,18 +90,35 @@ public class HandleNavi : MonoBehaviour
 
     private void StatePerContent(int index)
     {
+        flowImages[index].texture = ingTexture[index];
         currentImage.texture = flowImages[index].texture;
         flowImages[index].transform.localScale = new Vector3(0.4f, 0.7f, 0.7f);
-        // 이전 이미지 다시 원래 크기로
-        if(index != 0)
+        if (isNext)
         {
-            flowImages[index - 1].transform.localScale = originScale;
+            // 이전 이미지 다시 원래 크기로
+            if (index != 0)
+            {
+                flowImages[index - 1].transform.localScale = originScale;
+
+                // 성공하면 성공 텍스쳐 실패하면 실패텍스쳐
+                if (ScoreManager.instance.isClear)
+                {
+                    flowImages[index - 1].texture = clearTexture[index - 1];
+                }
+                else
+                {
+                    flowImages[index - 1].texture = failTexture[index - 1];
+                    ScoreManager.instance.isClear = true;
+                }
+            }
+            isNext = false;
         }
     }
 
     public void HandleNextContent()
     {
         handleTimernScore.resetFlag = true;
-        currentContent++;
+        isNext = true;
     }
+
 }

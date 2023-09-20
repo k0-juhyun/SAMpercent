@@ -20,6 +20,8 @@ public class HandleStartLine : MonoBehaviour
         {
             audioSource.enabled = true;
             HandleNavi.instance.HandleNextContent();
+            HandleNavi.instance.currentContent = HandleNavi.CurrentContent.Hill;
+            print("¸î¹ø");
         }
     }
 }

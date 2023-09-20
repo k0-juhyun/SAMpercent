@@ -19,6 +19,7 @@ public class HandleTurnLeft : MonoBehaviour
         {
             audioSource.enabled = true;
             HandleNavi.instance.HandleNextContent();
+            HandleNavi.instance.currentContent = HandleNavi.CurrentContent.Cross;
         }
     }
 }

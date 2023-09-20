@@ -18,10 +18,6 @@ public class HandleTrafficCollider : MonoBehaviour
         if (wheelController != null)
         {
             print(other.gameObject.name);
-            if (this.gameObject.name == "1")
-            {
-                HandleNavi.instance.HandleNextContent();
-            }
             signalViolation = true;
         }
     }
@@ -33,6 +29,11 @@ public class HandleTrafficCollider : MonoBehaviour
         if (wheelController != null)
         {
             print(other.gameObject.name);
+            if (this.gameObject.name == "1")
+            {
+                HandleNavi.instance.HandleNextContent();
+                HandleNavi.instance.currentContent = HandleNavi.CurrentContent.Parking;
+            }
             signalViolation = false;
         }
     }
