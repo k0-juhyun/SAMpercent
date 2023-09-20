@@ -15,7 +15,6 @@ public class GameFlowManager : MonoBehaviour
     private WheelController wheelController;
 
     private WaitForSeconds updateCoroutine;
-    private WaitForSeconds delay;
 
     public enum LicenseFlow
     {

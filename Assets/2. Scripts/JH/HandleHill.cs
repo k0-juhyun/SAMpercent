@@ -48,7 +48,14 @@ public class HandleHill : MonoBehaviour
         if (wheelController == null)
             return;
 
+        // 4초 이상 정지 안한경우
         if (false == check)
+        {
             ScoreManager.instance.Deduction(hillScore);
+            print("언덕 감점");
+        }
+
+        // 다음 플로우로 넘어가기
+        HandleNavi.instance.HandleNextContent();
     }
 }

@@ -6,7 +6,10 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
 
+    // ÃÑÁ¡
     public int Score;
+    // À§¹Ý È½¼ö
+    public int violationCount;
 
     public bool disqulification;
 
@@ -17,6 +20,7 @@ public class ScoreManager : MonoBehaviour
     public int Deduction(int deducScore)
     {
         Score -= deducScore;
+        violationCount++;
         return Score;
     }
 

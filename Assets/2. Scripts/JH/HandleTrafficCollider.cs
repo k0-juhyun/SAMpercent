@@ -15,9 +15,13 @@ public class HandleTrafficCollider : MonoBehaviour
         print(other.gameObject.name);
         wheelController = other.GetComponentInParent<WheelController>();
 
-        if(wheelController != null)
+        if (wheelController != null)
         {
             print(other.gameObject.name);
+            if (this.gameObject.name == "1")
+            {
+                HandleNavi.instance.HandleNextContent();
+            }
             signalViolation = true;
         }
     }
