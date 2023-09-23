@@ -7,6 +7,8 @@ public class HandleLight : MonoBehaviour
     private Transform lightObj;
 
     private MeshRenderer meshRenderer;
+
+    public Material M_light;
     private void Awake()
     {
         lightObj = transform.GetChild(0);
@@ -15,6 +17,6 @@ public class HandleLight : MonoBehaviour
 
     void Update()
     {
-        lightObj.gameObject.SetActive(meshRenderer.material.color != Color.gray);
+        lightObj.gameObject.SetActive(meshRenderer.material != M_light);
     }
 }
