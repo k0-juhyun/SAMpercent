@@ -17,9 +17,9 @@ public class SideBrake : MonoBehaviour
         {
             this.transform.localEulerAngles = new Vector3( 0f, this.transform.localRotation.y, this.transform.localRotation.z);
         }
-        else if(this.transform.localEulerAngles.x > 35f && this.transform.localEulerAngles.x < 180f)
+        else if(this.transform.localEulerAngles.x > 25f && this.transform.localEulerAngles.x < 180f)
         {
-            this.transform.localEulerAngles = new Vector3( 35f, this.transform.localRotation.y, this.transform.localRotation.z);
+            this.transform.localEulerAngles = new Vector3( 25f, this.transform.localRotation.y, this.transform.localRotation.z);
         }
 
     }
