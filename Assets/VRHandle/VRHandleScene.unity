@@ -580,9 +580,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 822335229}
-  insideHand: {fileID: 536499714}
-  handleModel: {fileID: 1549146050}
-  rotateAngle: 0
+  insideHandModel: {fileID: 536499714}
+  handle: {fileID: 1549146050}
+  totalRotateAngle: 0
 --- !u!4 &1364529450
 Transform:
   m_ObjectHideFlags: 0
