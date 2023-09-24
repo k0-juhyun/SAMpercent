@@ -36,10 +36,19 @@ public class Handle : XRBaseInteractable
     {
         base.OnSelectEntered(args);
 
-        grabbedHand = insideHandModel.localPosition.normalized;
+        //핸들을 잡았을 때 핸들안에 있는 sphere collider의 localPosition을 가져온다.
+
+        grabbedHand = args.interactableObject.transform.localPosition.normalized;
+
+        print(args.interactableObject);
         //원상복구 하는 도중 남은 각도를 원래값으로 되돌리자
         totalRotateAngle *= -directionOfRotation;
-        //print("핸들을 선택했다.");
+        print("핸들을 선택했다.");
+    }
+
+    protected override void OnSelectEntering(SelectEnterEventArgs args)
+    {
+        base.OnSelectEntering(args);
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args)
@@ -51,7 +60,7 @@ public class Handle : XRBaseInteractable
 
         //회전각을 절대 값으로 만든다.
         totalRotateAngle = Mathf.Abs(totalRotateAngle);
-        //print("핸들을 나갔다.");
+        print("핸들을 나갔다.");
     }
 
     private void SetInsideHandPosition()
@@ -110,7 +119,7 @@ public class Handle : XRBaseInteractable
         totalRotateAngle += angle;
 
         //z축 기준으로 0도 부터 총 회전한 각도 각까지 Slerp로 부드럽게 회전한다.
-        handle.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(0f, 0f, totalRotateAngle), smoothTime * kAdjust * Time.deltaTime);
+        handle.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(25f, 0f, totalRotateAngle), smoothTime * kAdjust * Time.deltaTime);
 
         grabbedHand = insideHandModel.localPosition.normalized;
     }
