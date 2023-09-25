@@ -23,4 +23,18 @@ public class HandleGuardRail : MonoBehaviour
             }
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        carTest = collision.gameObject.GetComponentInParent<JHCarTest>();
+        if(carTest != null)
+        {
+            if(carTest.isStartUp)
+            {
+                print("가드레일 충돌 감점");
+                // 감점
+                ScoreManager.instance.Deduction(contactAccidentScore);
+            }
+        }
+    }
 }
