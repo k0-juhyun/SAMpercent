@@ -22,10 +22,15 @@ public class HandleSuddenStop : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {   
+        // 돌발 사운드 켜짐
+        audioSource.enabled = true;
+    }
+
     // 돌발등이 켜졌을때
     private void OnTriggerStay(Collider other)
     {
-        audioSource.enabled = true;
         carTest = other.GetComponentInParent<JHCarTest>();
         wheelController = other.GetComponentInParent<WheelController>();
 
