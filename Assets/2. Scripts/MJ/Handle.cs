@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using static Enumeration;
@@ -33,12 +34,16 @@ public class Handle : XRBaseInteractable
        public float rotationTime = 1f;
        private float rotationVelocity;*/
 
+    private Vector3 handPos;
+
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         base.OnSelectEntered(args);
 
         //내가 잡은 핸들 충돌 오브젝트위치를 가져온다.
         grabbedHand = handleCenter.localPosition.normalized;
+
+        GetComponent<Instance_ID>().rightHand.transform.position = hand.position;
 
         //원상복구 하는 도중 남은 각도를 원래값으로 되돌리자
         totalRotateAngle *= -directionOfRotation;
