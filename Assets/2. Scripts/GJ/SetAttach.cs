@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class SetAttach : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Transform lh, rh;
 
-    // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        
+        this.transform.position = rh.transform.position;
+        this.transform.rotation = rh.transform.rotation;
     }
 }
