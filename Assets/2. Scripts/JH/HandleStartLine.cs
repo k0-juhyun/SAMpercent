@@ -19,6 +19,9 @@ public class HandleStartLine : MonoBehaviour
         if(wheelController != null ) 
         {
             audioSource.enabled = true;
+            HandleNavi.instance.HandleNextContent();
+            HandleNavi.instance.currentContent = HandleNavi.CurrentContent.Hill;
+            print("¸î¹ø");
         }
     }
 }

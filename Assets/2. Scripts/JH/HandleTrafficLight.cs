@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class HandleTrafficLight : MonoBehaviour
 {
+    // 원래 자기 색깔 저장
+    private Dictionary<GameObject, Color> initialColors = new Dictionary<GameObject, Color>();
+
     public GameObject[] evenTrafficLight; // 첫 번째 신호등 오브젝트
     public GameObject[] oddTrafficLight; // 두 번째 신호등 오브젝트
 
@@ -19,6 +22,8 @@ public class HandleTrafficLight : MonoBehaviour
     private float yellowLightDuration = 2f; // 노랑불 지속 시간 (2초)
     private float redLightDuration = 15f; // 노랑불 지속 시간 (2초)
 
+    public Material[] Colors;
+
     private float timer1 = 0f;
     private float timer2 = 0f;
 
@@ -29,6 +34,15 @@ public class HandleTrafficLight : MonoBehaviour
     {
         even = new bool[evenTrafficLight.Length];
         odd = new bool[oddTrafficLight.Length];
+
+        foreach (GameObject trafficLight in evenTrafficLight)
+        {
+            SaveInitialColors(trafficLight);
+        }
+        foreach (GameObject trafficLight in oddTrafficLight)
+        {
+            SaveInitialColors(trafficLight);
+        }
     }
 
     private enum TrafficLightState
@@ -48,14 +62,15 @@ public class HandleTrafficLight : MonoBehaviour
             case TrafficLightState.Green:
                 if (timer1 >= greenLightDuration)
                 {
+                    print("초록불");
                     state1 = TrafficLightState.Yellow;
                     timer1 = 0f;
 
-                    SetTrafficLightColor(evenTrafficLight[0], Color.yellow, 4);
-                    SetTrafficLightColor(evenTrafficLight[1], Color.yellow, 4);
+                    SetTrafficLightMaterial(evenTrafficLight[0], Colors[2], 3);
+                    SetTrafficLightMaterial(evenTrafficLight[1], Colors[2], 3);
 
-                    SetTrafficLightColor(oddTrafficLight[0], Color.yellow, 4);
-                    SetTrafficLightColor(oddTrafficLight[1], Color.yellow, 4);
+                    SetTrafficLightMaterial(oddTrafficLight[0], Colors[2], 3);
+                    SetTrafficLightMaterial(oddTrafficLight[1], Colors[2], 3);
                 }
                 break;
             case TrafficLightState.Yellow:
@@ -64,11 +79,11 @@ public class HandleTrafficLight : MonoBehaviour
                     state1 = TrafficLightState.Red;
                     timer1 = 0f;
 
-                    SetTrafficLightColor(evenTrafficLight[0], Color.red, 3);
-                    SetTrafficLightColor(evenTrafficLight[1], Color.red, 3);
+                    SetTrafficLightMaterial(evenTrafficLight[0], Colors[0], 2);
+                    SetTrafficLightMaterial(evenTrafficLight[1], Colors[0], 2);
 
-                    SetTrafficLightColor(oddTrafficLight[0], Color.green, 6);
-                    SetTrafficLightColor(oddTrafficLight[1], Color.green, 6);
+                    SetTrafficLightMaterial(oddTrafficLight[0], Colors[1], 5);
+                    SetTrafficLightMaterial(oddTrafficLight[1], Colors[1], 5);
                 }
                 break;
             case TrafficLightState.Red:
@@ -77,11 +92,11 @@ public class HandleTrafficLight : MonoBehaviour
                     state1 = TrafficLightState.Green;
                     timer1 = 0f;
 
-                    SetTrafficLightColor(evenTrafficLight[0], Color.green, 6);
-                    SetTrafficLightColor(evenTrafficLight[1], Color.green, 6);
+                    SetTrafficLightMaterial(evenTrafficLight[0], Colors[1], 5);
+                    SetTrafficLightMaterial(evenTrafficLight[1], Colors[1], 5);
 
-                    SetTrafficLightColor(oddTrafficLight[0], Color.red, 3);
-                    SetTrafficLightColor(oddTrafficLight[1], Color.red, 3);
+                    SetTrafficLightMaterial(oddTrafficLight[0], Colors[0], 2);
+                    SetTrafficLightMaterial(oddTrafficLight[1], Colors[0], 2);
                 }
                 break;
         }
@@ -96,11 +111,11 @@ public class HandleTrafficLight : MonoBehaviour
                     state2 = TrafficLightState.Yellow;
                     timer2 = 0f;
 
-                    SetTrafficLightColor(oddTrafficLight[0], Color.yellow, 4);
-                    SetTrafficLightColor(oddTrafficLight[1], Color.yellow, 4);
+                    SetTrafficLightMaterial(oddTrafficLight[0], Colors[2], 3);
+                    SetTrafficLightMaterial(oddTrafficLight[1], Colors[2], 3);
                                                                             
-                    SetTrafficLightColor(evenTrafficLight[0], Color.yellow, 4);
-                    SetTrafficLightColor(evenTrafficLight[1], Color.yellow, 4);
+                    SetTrafficLightMaterial(evenTrafficLight[0], Colors[2], 3);
+                    SetTrafficLightMaterial(evenTrafficLight[1], Colors[2], 3);
                 }
                 break;
             case TrafficLightState.Yellow:
@@ -109,11 +124,11 @@ public class HandleTrafficLight : MonoBehaviour
                     state2 = TrafficLightState.Red;
                     timer2 = 0f;
 
-                    SetTrafficLightColor(oddTrafficLight[0], Color.red, 3);
-                    SetTrafficLightColor(oddTrafficLight[1], Color.red, 3);
+                    SetTrafficLightMaterial(oddTrafficLight[0], Colors[0], 2);
+                    SetTrafficLightMaterial(oddTrafficLight[1], Colors[0], 2);
 
-                    SetTrafficLightColor(evenTrafficLight[0], Color.green, 6);
-                    SetTrafficLightColor(evenTrafficLight[1], Color.green, 6);
+                    SetTrafficLightMaterial(evenTrafficLight[0], Colors[1], 5);
+                    SetTrafficLightMaterial(evenTrafficLight[1], Colors[1], 5);
                 }
                 break;
             case TrafficLightState.Red:
@@ -122,11 +137,11 @@ public class HandleTrafficLight : MonoBehaviour
                     state2 = TrafficLightState.Green;
                     timer2 = 0f;
 
-                    SetTrafficLightColor(oddTrafficLight[0], Color.green, 6);
-                    SetTrafficLightColor(oddTrafficLight[1], Color.green, 6);
+                    SetTrafficLightMaterial(oddTrafficLight[0], Colors[1], 5);
+                    SetTrafficLightMaterial(oddTrafficLight[1], Colors[1], 5);
 
-                    SetTrafficLightColor(evenTrafficLight[0], Color.red, 3);
-                    SetTrafficLightColor(evenTrafficLight[1], Color.red, 3);
+                    SetTrafficLightMaterial(evenTrafficLight[0], Colors[0], 2);
+                    SetTrafficLightMaterial(evenTrafficLight[1], Colors[0], 2);
                 }
                 break;
         }
@@ -175,21 +190,27 @@ public class HandleTrafficLight : MonoBehaviour
         }
         #endregion
     }
-
-    private void SetTrafficLightColor(GameObject trafficLight, Color color, int childIndexToChange)
+    private void SaveInitialColors(GameObject trafficLight)
     {
         Renderer[] renderers = trafficLight.GetComponentsInChildren<Renderer>();
+        foreach (Renderer renderer in renderers)
+        {
+            initialColors[renderer.gameObject] = renderer.material.color;
+        }
+    }
 
+    private void SetTrafficLightMaterial(GameObject trafficLight, Material material, int childIndexToChange)
+    {
+        Renderer[] renderers = trafficLight.GetComponentsInChildren<Renderer>();
         for (int i = 0; i < renderers.Length; i++)
         {
             if (i == childIndexToChange)
             {
-                renderers[i].material.color = color;
+                renderers[i].material = material; // Material을 새 Material로 교체
             }
             else
             {
-                // 다른 자식 오브젝트는 회색으로 변경
-                renderers[i].material.color = Color.gray;
+                renderers[i].material = Colors[3];
             }
         }
     }

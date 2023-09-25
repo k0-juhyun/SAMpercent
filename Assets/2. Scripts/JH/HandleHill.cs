@@ -8,13 +8,19 @@ using UnityEngine;
 public class HandleHill : MonoBehaviour
 {
     private WheelController wheelController;
+    private AudioSource audioSource;
 
     // 정지 시간
-    private float stopTime = 4;
+    private float stopTime = 5;
 
     private int hillScore = 5;
 
     private bool check;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -36,7 +42,7 @@ public class HandleHill : MonoBehaviour
             {
                 print("4초 지남");
                 check = true;
-                SoundManager.Instance.PlaySFX(1);
+                audioSource.enabled = true;
             }
             break;
         }
@@ -48,7 +54,13 @@ public class HandleHill : MonoBehaviour
         if (wheelController == null)
             return;
 
+        // 4초 이상 정지 안한경우
         if (false == check)
+        {
             ScoreManager.instance.Deduction(hillScore);
+            print("언덕 감점");
+        }
+        HandleNavi.instance.HandleNextContent();
+        HandleNavi.instance.currentContent = HandleNavi.CurrentContent.TurnLeft;
     }
 }

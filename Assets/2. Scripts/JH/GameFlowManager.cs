@@ -15,7 +15,6 @@ public class GameFlowManager : MonoBehaviour
     private WheelController wheelController;
 
     private WaitForSeconds updateCoroutine;
-    private WaitForSeconds delay;
 
     public enum LicenseFlow
     {
@@ -108,6 +107,20 @@ public class GameFlowManager : MonoBehaviour
     // 안전 벨트 확인 함수
     private IEnumerator CheckSeatBelt()
     {
+        float startTime = Time.time;
+
+        while (!car.isSeatBelt)
+        {
+            yield return null;
+
+            if (Time.time - startTime > 5f)
+            {
+                print("안전 벨트 감점");
+                ScoreManager.instance.Deduction(10);
+                break;
+            }
+        }
+
         if (car.isSeatBelt)
         {
             print("안전벨트 완료");
