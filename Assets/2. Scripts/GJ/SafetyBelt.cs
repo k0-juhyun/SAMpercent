@@ -24,4 +24,10 @@ public class SafetyBelt : MonoBehaviour
         this.transform.position = originPos;
         this.transform.localRotation = originRot;
     }
+    public void onSeatBelt()
+    {
+        GameFlowManager.instance.isSeatBelt = true;
+        HandleNavi.instance.HandleNextContent();
+        HandleNavi.instance.currentContent = HandleNavi.CurrentContent.Forward;
+    }
 }

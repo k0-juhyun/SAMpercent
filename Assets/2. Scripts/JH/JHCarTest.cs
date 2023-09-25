@@ -10,7 +10,6 @@ public class JHCarTest : MonoBehaviour
     public bool gaerP;
     public bool isIn1stLine;
     public bool isIn2ndLine;
-    public bool isSeatBelt;
     public bool isHeadLight;
     public bool isHightBeam;
     public bool isLowBeam;
@@ -36,35 +35,35 @@ public class JHCarTest : MonoBehaviour
             print("ºñ»ó±ôºıÀÌ ²ô±â");
         }
 
-        if (Input.GetKeyDown(KeyCode.F2) && isleftTurnSignalLight == false)
-        {
-            isleftTurnSignalLight = true;
-            print("ÁÂÈ¸Àü ±ôºıÀÌ ÄÔ");
-        }
+        //if (Input.GetKeyDown(KeyCode.F2) && isleftTurnSignalLight == false)
+        //{
+        //    isleftTurnSignalLight = true;
+        //    print("ÁÂÈ¸Àü ±ôºıÀÌ ÄÔ");
+        //}
 
-        else if (Input.GetKeyDown(KeyCode.F2) && isleftTurnSignalLight)
-        {
-            isleftTurnSignalLight = false;
-            print("ÁÂÈ¸Àü ±ôºıÀÌ ²û");
-        }
+        //else if (Input.GetKeyDown(KeyCode.F2) && isleftTurnSignalLight)
+        //{
+        //    isleftTurnSignalLight = false;
+        //    print("ÁÂÈ¸Àü ±ôºıÀÌ ²û");
+        //}
 
-        if (Input.GetKeyDown(KeyCode.F3) && gaerP == false)
-        {
-            gaerP = true;
-            print("¿ìÈ¸Àü ±ôºıÀÌ ÄÔ");
-        }
+        //if (Input.GetKeyDown(KeyCode.F3) && gaerP == false)
+        //{
+        //    gaerP = true;
+        //    print("¿ìÈ¸Àü ±ôºıÀÌ ÄÔ");
+        //}
 
-        else if (Input.GetKeyDown(KeyCode.F3) && gaerP)
-        {
-            gaerP = false;
-            print("¿ìÈ¸Àü ±ôºıÀÌ ²û");
-        }
+        //else if (Input.GetKeyDown(KeyCode.F3) && gaerP)
+        //{
+        //    gaerP = false;
+        //    print("¿ìÈ¸Àü ±ôºıÀÌ ²û");
+        //}
 
-        if (Input.GetKeyDown(KeyCode.Escape) && isStartUp == false)
-        {
-            print("½Ãµ¿ ÄÔ");
-            isStartUp = true;
-        }
+        //if (Input.GetKeyDown(KeyCode.Escape) && isStartUp == false)
+        //{
+        //    print("½Ãµ¿ ÄÔ");
+        //    isStartUp = true;
+        //}
 
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -72,78 +71,64 @@ public class JHCarTest : MonoBehaviour
             isStartUp = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1) && isSeatBelt == false)
-        {
-            print("¾ÈÀü º§Æ® ¸â");
-            HandleNavi.instance.HandleNextContent();
-            HandleNavi.instance.currentContent = HandleNavi.CurrentContent.Forward;
-            isSeatBelt = true;
-        }
+        //if (Input.GetKeyDown(KeyCode.Alpha2) && isHeadLight == false)
+        //{
+        //    print("ÀüÁ¶µî ÄÔ");
+        //    isHeadLight = true;
+        //}
 
-        else if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            print("¾ÈÀü º§Æ® ¾È¸â");
-            isSeatBelt = false;
-        }
+        //else if (Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    isHeadLight = false;
+        //    print("ÀüÁ¶µî ²û" + isHeadLight);
+        //}
 
-        if (Input.GetKeyDown(KeyCode.Alpha2) && isHeadLight == false)
-        {
-            print("ÀüÁ¶µî ÄÔ");
-            isHeadLight = true;
-        }
+        //if (Input.GetKeyDown(KeyCode.Alpha3) && isHightBeam == false)
+        //{
+        //    print("»óÇâµî ÄÔ");
+        //    isHightBeam = true;
+        //}
 
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            isHeadLight = false;
-            print("ÀüÁ¶µî ²û" + isHeadLight);
-        }
+        //else if (Input.GetKeyDown(KeyCode.Alpha3))
+        //{
+        //    print("»óÇâµî ²û");
+        //    isHightBeam = false;
+        //}
 
-        if (Input.GetKeyDown(KeyCode.Alpha3) && isHightBeam == false)
-        {
-            print("»óÇâµî ÄÔ");
-            isHightBeam = true;
-        }
+        //if (Input.GetKeyDown(KeyCode.Alpha4) && isLowBeam == false)
+        //{
+        //    print("ÇÏÇâµî ÄÔ");
+        //    isLowBeam = true;
+        //}
+        //else if (Input.GetKeyDown(KeyCode.Alpha4)) 
+        //{
+        //    print("ÇÏÇâµî ²û");
+        //    isLowBeam = false;
+        //}
 
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            print("»óÇâµî ²û");
-            isHightBeam = false;
-        }
+        //if (Input.GetKeyDown(KeyCode.Alpha5) && isWiper == false)
+        //{
+        //    print("¿ÍÀÌÆÛ ÄÔ");
+        //    isWiper = true;
+        //}
 
-        if (Input.GetKeyDown(KeyCode.Alpha4) && isLowBeam == false)
-        {
-            print("ÇÏÇâµî ÄÔ");
-            isLowBeam = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4)) 
-        {
-            print("ÇÏÇâµî ²û");
-            isLowBeam = false;
-        }
+        //else if (Input.GetKeyDown(KeyCode.Alpha5))
+        //{
+        //    print("¿ÍÀÌÆÛ ²û");
+        //    isWiper = false;
+        //}
 
-        if (Input.GetKeyDown(KeyCode.Alpha5) && isWiper == false)
-        {
-            print("¿ÍÀÌÆÛ ÄÔ");
-            isWiper = true;
-        }
+        //if (Input.GetKeyDown(KeyCode.Alpha6) && isSideBreak == false)
+        //{
+        //    print("»çÀÌµåºê·¹ÀÌÅ© ÄÔ");
+        //    isSideBreak = true;
+        //}
 
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            print("¿ÍÀÌÆÛ ²û");
-            isWiper = false;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha6) && isSideBreak == false)
-        {
-            print("»çÀÌµåºê·¹ÀÌÅ© ÄÔ");
-            isSideBreak = true;
-        }
-
-        else if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            print("»çÀÌµåºê·¹ÀÌÅ© ²û");
-            isSideBreak = false;
-        }
+        //else if (Input.GetKeyDown(KeyCode.Alpha6))
+        //{
+        //    print("»çÀÌµåºê·¹ÀÌÅ© ²û");
+        //    isSideBreak = false;
+        //}
         #endregion
     }
 

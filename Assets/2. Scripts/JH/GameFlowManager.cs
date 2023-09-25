@@ -13,9 +13,13 @@ public class GameFlowManager : MonoBehaviour
 {
     private JHCarTest car;
     private WheelController wheelController;
+    public static GameFlowManager instance;
 
     private WaitForSeconds updateCoroutine;
 
+    public GameObject soundManager;
+
+    public bool isSeatBelt = false;
     public enum LicenseFlow
     {
         GuideMent,
@@ -43,12 +47,18 @@ public class GameFlowManager : MonoBehaviour
         StartCoroutine(HandleFlow());
     }
 
+    private void Start()
+    {
+        soundManager.SetActive(true);
+    }
+
     // 다음 상태로 넘어가는 함수
     private void StartNextFlow()
     {
         // 다음 상태로 이동
         licenseFlow++;
     }
+
 
     // 플로우 진행 코루틴
     IEnumerator HandleFlow()
@@ -109,7 +119,7 @@ public class GameFlowManager : MonoBehaviour
     {
         float startTime = Time.time;
 
-        while (!car.isSeatBelt)
+        while (!GameFlowManager.instance.isSeatBelt)
         {
             yield return null;
 
@@ -121,7 +131,7 @@ public class GameFlowManager : MonoBehaviour
             }
         }
 
-        if (car.isSeatBelt)
+        if (GameFlowManager.instance.isSeatBelt)
         {
             print("안전벨트 완료");
             yield return StartCoroutine(SoundManager.Instance.PlaySFX(1));
@@ -228,7 +238,7 @@ public class GameFlowManager : MonoBehaviour
     //        StartNextFlow();
     //    }
     //}
-#endregion
+    #endregion
 
     private IEnumerator CheckStartUp()
     {

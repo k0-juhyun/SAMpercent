@@ -13,7 +13,7 @@ public class HandleCarSound : MonoBehaviour
 
     private void Update()
     {
-        if (carTest.isSeatBelt)
+        if (GameFlowManager.instance.isSeatBelt)
             SoundManager.Instance.PlaySFX(10);
         if (carTest.isStartUp)
             SoundManager.Instance.PlaySFX(9);
