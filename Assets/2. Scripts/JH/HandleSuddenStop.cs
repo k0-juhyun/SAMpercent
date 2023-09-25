@@ -7,6 +7,7 @@ public class HandleSuddenStop : MonoBehaviour
 {
     private JHCarTest carTest;
     private WheelController wheelController;
+    private AudioSource audioSource;
 
     private int suddenStopScore = 10;
 
@@ -15,6 +16,11 @@ public class HandleSuddenStop : MonoBehaviour
 
     // 브레이크를 누른적이 있는지 확인
     private bool isBreakPushed;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     // 돌발등이 켜졌을때
     private void OnTriggerStay(Collider other)
@@ -28,7 +34,7 @@ public class HandleSuddenStop : MonoBehaviour
         // wheelController.leftstop 으로 교체할 것
         if (wheelController.leftStop)
             isBreakPushed = true;
-        
+
         // 2 초이내에 브레이크를 누르지못한 경우
         // wheelController.leftstop 으로 교체할것
         while (!wheelController.leftStop && breakLimitTime > 0 && !isBreakPushed)
@@ -65,11 +71,15 @@ public class HandleSuddenStop : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         // 다시 출발 시 비상깜빡이를 끄지 않은 경우
-        if (carTest.isHazardWarningLight 
+        if (carTest.isHazardWarningLight
             && other.gameObject.name == "CarTrqigger")
         {
             ScoreManager.instance.Deduction(suddenStopScore);
             print("출발 시 비상깜빡이 끄지않아서 감점: " + suddenStopScore);
+        }
+        else
+        {
+            audioSource.enabled = true;
         }
     }
 }
