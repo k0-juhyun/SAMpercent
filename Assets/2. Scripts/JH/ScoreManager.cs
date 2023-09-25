@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
+    private AudioSource audioSource;
 
     // 총점
     public int Score;
@@ -18,9 +19,11 @@ public class ScoreManager : MonoBehaviour
     {
         instance = this;
         isClear = true;
+        audioSource = GetComponent<AudioSource>();
     }
     public int Deduction(int deducScore)
     {
+        audioSource.Play();
         Score -= deducScore;
         violationCount++;
         // 성공했는지 변수

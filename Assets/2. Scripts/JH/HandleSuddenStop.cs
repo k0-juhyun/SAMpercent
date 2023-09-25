@@ -25,6 +25,7 @@ public class HandleSuddenStop : MonoBehaviour
     // 돌발등이 켜졌을때
     private void OnTriggerStay(Collider other)
     {
+        audioSource.enabled = true;
         carTest = other.GetComponentInParent<JHCarTest>();
         wheelController = other.GetComponentInParent<WheelController>();
 
@@ -76,10 +77,6 @@ public class HandleSuddenStop : MonoBehaviour
         {
             ScoreManager.instance.Deduction(suddenStopScore);
             print("출발 시 비상깜빡이 끄지않아서 감점: " + suddenStopScore);
-        }
-        else
-        {
-            audioSource.enabled = true;
         }
     }
 }

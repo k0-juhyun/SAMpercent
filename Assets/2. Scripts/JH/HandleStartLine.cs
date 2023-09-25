@@ -7,6 +7,7 @@ public class HandleStartLine : MonoBehaviour
     private AudioSource audioSource;
 
     private WheelController wheelController;
+    private JHCarTest carTest;
 
     private void Awake()
     {
@@ -15,8 +16,9 @@ public class HandleStartLine : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        wheelController = other.GetComponentInParent<WheelController>();
-        if(wheelController != null ) 
+        print(other.gameObject);
+        carTest = other.GetComponentInParent<JHCarTest>();
+        if(carTest != null) 
         {
             audioSource.enabled = true;
             HandleNavi.instance.HandleNextContent();
