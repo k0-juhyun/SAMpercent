@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using static Enumeration;
 
 public class Handle : XRBaseInteractable
 {
     [SerializeField] private Transform handle;
     [SerializeField] private Transform hand;
-    [SerializeField] private Transform insideHandModel;
+    [SerializeField] private Transform handleCenter;
 
     // 회전한 누적 값
     public float totalRotateAngle;
@@ -36,10 +37,12 @@ public class Handle : XRBaseInteractable
     {
         base.OnSelectEntered(args);
 
-        grabbedHand = insideHandModel.localPosition.normalized;
+        //내가 잡은 핸들 충돌 오브젝트위치를 가져온다.
+        grabbedHand = handleCenter.localPosition.normalized;
+
         //원상복구 하는 도중 남은 각도를 원래값으로 되돌리자
         totalRotateAngle *= -directionOfRotation;
-        //print("핸들을 선택했다.");
+        print("핸들을 선택했다.");
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args)
@@ -51,18 +54,18 @@ public class Handle : XRBaseInteractable
 
         //회전각을 절대 값으로 만든다.
         totalRotateAngle = Mathf.Abs(totalRotateAngle);
-        //print("핸들을 나갔다.");
+        print("핸들을 나갔다.");
     }
 
     private void SetInsideHandPosition()
     {
         //수직으로 세운다.
-        insideHandModel.localEulerAngles = Vector3.zero;
-        insideHandModel.position = hand.position;
-        Vector3 localPos = insideHandModel.localPosition;
+        handleCenter.localEulerAngles = Vector3.zero;
+        handleCenter.position = hand.position;
+        Vector3 localPos = handleCenter.localPosition;
         localPos.z = 0;
         localPos = localPos.normalized * 0.5f;
-        insideHandModel.localPosition = localPos;
+        handleCenter.localPosition = localPos;
     }
 
     public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
@@ -97,63 +100,30 @@ public class Handle : XRBaseInteractable
                 }
             }
             SetInsideHandPosition();
-            insideHandModel.RotateAround(transform.position, transform.right, 25);
+            handleCenter.RotateAround(transform.position, transform.right, 25);
         }
     }
 
     private void RotateHandle()
     {
-        Vector3 crossHandle = Vector3.Cross(grabbedHand, insideHandModel.localPosition.normalized);
+        Vector3 crossHandle = Vector3.Cross(grabbedHand, handleCenter.localPosition.normalized);
 
-        float angle = Vector3.Angle(grabbedHand, insideHandModel.localPosition.normalized) * crossHandle.normalized.z;
+        float angle = Vector3.Angle(grabbedHand, handleCenter.localPosition.normalized) * crossHandle.normalized.z;
 
         totalRotateAngle += angle;
 
         //z축 기준으로 0도 부터 총 회전한 각도 각까지 Slerp로 부드럽게 회전한다.
-        handle.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(0f, 0f, totalRotateAngle), smoothTime * kAdjust * Time.deltaTime);
+        handle.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(25f, 0f, totalRotateAngle), smoothTime * kAdjust * Time.deltaTime);
 
-        grabbedHand = insideHandModel.localPosition.normalized;
+        grabbedHand = handleCenter.localPosition.normalized;
     }
 
-    /*    //핸들을 돌린다.
-        private void RotateHandle()
+    /*    private void OnTriggerEnter(Collider other)
         {
-            //1. 돌린 총 각도를 구한다.
-            float totalHandleAngle = GetHandleAngle();
-            //2. 현재 각도와 이전 각도의 차이를 구한다.
-            float angleDifference = currentAngle - totalHandleAngle;
-            //3. 핸들을 z축 방향으로, 간격차 만큼, 월드 방향으로 부드럽게 돌린다.
-            handle.Rotate(transform.forward, -angleDifference, Space.World);
-            ////4. 현재 각도를 총 각도로 저장한다.
-            currentAngle = totalHandleAngle;
-            ////5. 핸들 이벤트가 있을 때 핸들을 돌린 값을 리스트 이벤트에 저장한다.
-            HandleRotated?.Invoke(angleDifference);
-        }
-
-        //핸들 각도를 가져온다.
-        private float GetHandleAngle()
-        {
-            //1. 현재 총 각도 변수를 만든다.
-            float totalAngle = 0f;
-            //2. 상호작용 선택된 IXRSelectInteractor를 가져온다.
-            foreach (IXRSelectInteractor interactor in interactorsSelecting)
+            //부딪힌 레이어가 Handle일 때 local 위치를 기억한다.
+            if (other.gameObject.layer == LayerMask.NameToLayer("Hand"))
             {
-                //3. 상호작용 선택된 interactor의 위치 벡터를 가져오고 변수에 저장한다.
-                Vector3 interactorPos = interactor.transform.localPosition;
-                //4. 총 각도에 위치 벡터 각도와 회전 민감도f
-                totalAngle += SetHandleAngle(interactorPos) * GetRotationSensitivity();
+                GetComponent<Instance_ID>().rightHand.transform.localPosition = other.transform.position;
             }
-            //5.회전 각도를 부드럽게 회전하도록 반환한다.
-            return totalAngle;
-        }
-
-        //두 벡터 사이의 각도를 구한다(signedAngle) z회전 축 벡터, 비교할 벡터)
-        private float SetHandleAngle(Vector3 direction)
-        {
-            float rotationAngle = Vector2.SignedAngle(transform.up, direction);
-            return Mathf.SmoothDampAngle(handle.eulerAngles.z, rotationAngle, ref rotationVelocity, rotationTime);
-        }
-
-        //양손 회전 감도를 더 작게 사용
-        private float GetRotationSensitivity() => 1.0f / interactorsSelecting.Count;*/
+        }*/
 }

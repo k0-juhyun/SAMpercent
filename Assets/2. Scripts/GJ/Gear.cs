@@ -5,7 +5,19 @@ using UnityEngine;
 public class Gear : MonoBehaviour
 {
     public List<Collider> gearList;
+    public List<Collider> gearMeshes;
+    public GameObject gearMesh;
     public GameObject gearParent;
+
+    private void Start()
+    {
+        //var col = gearMesh.GetComponents<Collider>();
+        //foreach (Collider col in gearMeshes)
+        //{
+            
+        //    gearMeshes.Add(col);
+        //}
+    }
 
     private void OnTriggerEnter(Collider col)
     {
@@ -36,6 +48,6 @@ public class Gear : MonoBehaviour
         this.transform.SetParent(gearParent.transform);
         this.transform.localScale = Vector3.one;
 
-        this.transform.localPosition = new Vector3(Mathf.Clamp(this.transform.localPosition.x, -0.0675f, -0.005f), 1.335f, Mathf.Clamp(this.transform.localPosition.z, 0.6125f, 0.845f));
+        this.transform.localPosition = new Vector3(Mathf.Clamp(this.transform.localPosition.x, -0.0045f, 0.005f), 0f, Mathf.Clamp(this.transform.localPosition.z, -0.035f, 0f));
     }
 }

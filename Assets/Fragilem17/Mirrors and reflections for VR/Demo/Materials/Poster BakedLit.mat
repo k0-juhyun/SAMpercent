@@ -117,7 +117,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.548
+    - _Alpha: 0.552
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -141,7 +141,7 @@ Material:
     - _Metallic: 0
     - _MetallicV: 1
     - _NormalStrength: 0
-    - _NormalToAlbedo: 0.361
+    - _NormalToAlbedo: 0.438
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -151,16 +151,16 @@ Material:
     - _RefractiveIndex: 0
     - _Smoothness: 1
     - _SmoothnessTextureChannel: 0
-    - _Specular: 0.9
+    - _Specular: -0.52
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
     - _Use_Metallic_Texture: 0
     - _WorkflowMode: 1
-    - _ZTest: 4
+    - _ZTest: 3
     - _ZWrite: 1
     - _ZWriteControl: 0
-    - _refraction: 0.156
+    - _refraction: 0.161
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -174,8 +174,8 @@ Material:
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _TilingAlbedo: {r: 1, g: 1, b: 0, a: 0}
     - _TilingNormal: {r: 1, g: 1, b: 0, a: 0}
-    - _Tiling_And_Offset: {r: 1, g: 1, b: 0, a: 0}
-    - _Tiling_And_Offset_Normal: {r: 0.7, g: 1, b: 0.19, a: -0.03}
+    - _Tiling_And_Offset: {r: 0.3, g: -0.26, b: 0, a: 0}
+    - _Tiling_And_Offset_Normal: {r: 0.5, g: 0.58, b: 0.07, a: -0.51}
     - _Tint: {r: 1, g: 1, b: 1, a: 1}
     - _WorldDir: {r: 0, g: 0, b: 0, a: 0}
     - _WorldPos: {r: 0, g: 0, b: 0, a: 0}
