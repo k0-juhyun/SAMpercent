@@ -4,30 +4,24 @@ using UnityEngine;
 
 public class SafetyBelt : MonoBehaviour
 {
-    Vector3 originPos;
-    Quaternion originRot;
+    private Vector3 originPos;
+    private Quaternion originRot;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         originPos = this.transform.position;
         originRot = this.transform.rotation;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
     }
 
     public void OriginPosAndRot()
     {
         this.transform.position = originPos;
         this.transform.localRotation = originRot;
-    }
-    public void onSeatBelt()
-    {
-        GameFlowManager.instance.isSeatBelt = true;
-        HandleNavi.instance.HandleNextContent();
-        HandleNavi.instance.currentContent = HandleNavi.CurrentContent.Forward;
     }
 }

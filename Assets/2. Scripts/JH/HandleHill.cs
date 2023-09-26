@@ -25,13 +25,13 @@ public class HandleHill : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        carTest = other.GetComponent<JHCarTest>();
-        if (carTest == null)
-            return;
-
-        //wheelController = other.GetComponentInParent<WheelController>();
-        //if (wheelController == null)
+        //carTest = other.GetComponent<JHCarTest>();
+        //if (carTest == null)
         //    return;
+
+        wheelController = other.GetComponentInParent<WheelController>();
+        if (wheelController == null)
+            return;
 
         // wheelController.leftstop
         // 4초 동안 정지해야한다
@@ -51,13 +51,13 @@ public class HandleHill : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        //wheelController = other.GetComponentInParent<WheelController>();
-        //if (wheelController == null)
-        //    return;
-
-        carTest = other.GetComponent<JHCarTest>();
-        if (carTest == null)
+        wheelController = other.GetComponentInParent<WheelController>();
+        if (wheelController == null)
             return;
+
+        //carTest = other.GetComponentInParent<JHCarTest>();
+        //if (carTest == null)
+        //    return;
 
         // 4초 이상 정지 안한경우
         if (false == check)

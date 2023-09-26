@@ -20,10 +20,12 @@ public class GameFlowManager : MonoBehaviour
     public GameObject soundManager;
 
     public bool isSeatBelt = false;
+
     public enum LicenseFlow
     {
         GuideMent,
         SeatBelt,
+
         //StartCar,
         //HeadLight,
         //HightBeam,
@@ -31,6 +33,7 @@ public class GameFlowManager : MonoBehaviour
         //WiperOn,
         //WiperOff,
         StartDrive,
+
         Drive,
         End
     }
@@ -59,9 +62,15 @@ public class GameFlowManager : MonoBehaviour
         licenseFlow++;
     }
 
+    public void HandleSeatBelt()
+    {
+        isSeatBelt = true;
+        HandleNavi.instance.HandleNextContent();
+        HandleNavi.instance.currentContent = HandleNavi.CurrentContent.Forward;
+    }
 
     // 플로우 진행 코루틴
-    IEnumerator HandleFlow()
+    private IEnumerator HandleFlow()
     {
         // 시험 끝날때 까지 확인
         while (!car.isEnd)
@@ -74,6 +83,7 @@ public class GameFlowManager : MonoBehaviour
                     yield return StartCoroutine(SoundManager.Instance.PlaySFX(0));
                     licenseFlow++;
                     break;
+
                 case LicenseFlow.SeatBelt:
                     print("안전벨트 플로우");
                     yield return StartCoroutine(CheckSeatBelt());
@@ -106,6 +116,7 @@ public class GameFlowManager : MonoBehaviour
                     print("주행 준비");
                     yield return StartCoroutine(CheckStartUp());
                     break;
+
                 case LicenseFlow.Drive:
                     print("주행 시작");
                     yield return StartCoroutine(CheckDrive());
@@ -119,7 +130,7 @@ public class GameFlowManager : MonoBehaviour
     {
         float startTime = Time.time;
 
-        while (!GameFlowManager.instance.isSeatBelt)
+        while (!isSeatBelt)
         {
             yield return null;
 
@@ -131,7 +142,7 @@ public class GameFlowManager : MonoBehaviour
             }
         }
 
-        if (GameFlowManager.instance.isSeatBelt)
+        if (isSeatBelt)
         {
             print("안전벨트 완료");
             yield return StartCoroutine(SoundManager.Instance.PlaySFX(1));
@@ -141,6 +152,7 @@ public class GameFlowManager : MonoBehaviour
     }
 
     #region 지워진 플로우들..
+
     //// 시동 걸기 함수
     //private IEnumerator CheckStartCar()
     //{
@@ -238,7 +250,8 @@ public class GameFlowManager : MonoBehaviour
     //        StartNextFlow();
     //    }
     //}
-    #endregion
+
+    #endregion 지워진 플로우들..
 
     private IEnumerator CheckStartUp()
     {
