@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -6,7 +7,10 @@ using static Enumeration;
 public class Handle : XRBaseInteractable
 {
     [SerializeField] private Transform handle;
-    [SerializeField] private Transform hand;
+    [SerializeField] private Transform rightHandController;
+    [SerializeField] private Transform leftHandController;
+    [SerializeField] private GameObject leftHandModel;
+    [SerializeField] private GameObject rightHandModel;
     [SerializeField] private Transform handleCenter;
 
     // 회전한 누적 값
@@ -25,35 +29,34 @@ public class Handle : XRBaseInteractable
     private float currentTime;
     public float initRotationTime = 2.5f;
 
-    /*   //회전한 각도 이벤트를 저장하는 리스트를 만든다.
-       public UnityEvent<float> HandleRotated;
-
-       //현재 각도를 저장하는 변수를 만든다.
-       private float currentAngle = 0f;
-
-       public float rotationTime = 1f;
-       private float rotationVelocity;*/
-
-    private Vector3 handPos;
-
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         base.OnSelectEntered(args);
 
-        //내가 잡은 핸들 충돌 오브젝트위치를 가져온다.
-        grabbedHand = handleCenter.localPosition.normalized;
-
-        GetComponent<Instance_ID>().rightHand.transform.position = hand.position;
-
-        //원상복구 하는 도중 남은 각도를 원래값으로 되돌리자
-        totalRotateAngle *= -directionOfRotation;
-        print("핸들을 선택했다.");
+        GrabHandle();
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
         base.OnSelectExited(args);
 
+        AssignDirection();
+    }
+
+    private void GrabHandle()
+    {
+        //내가 잡은 핸들 충돌 오브젝트위치를 가져온다.
+        grabbedHand = handleCenter.localPosition.normalized;
+
+        GetComponent<Instance_ID>().rightHand.transform.position = rightHandController.position;
+
+        //원상복구 하는 도중 남은 각도를 원래값으로 되돌리자
+        totalRotateAngle *= -directionOfRotation;
+        print("핸들을 선택했다.");
+    }
+
+    private void AssignDirection()
+    {
         if (totalRotateAngle > 0) directionOfRotation = rightRotation;
         else directionOfRotation = leftRotation;
 
@@ -62,11 +65,29 @@ public class Handle : XRBaseInteractable
         print("핸들을 나갔다.");
     }
 
-    private void SetInsideHandPosition()
+    private void SetGrabHandPosition()
     {
         //수직으로 세운다.
+
+        Vector3 centerPos = (rightHandController.position + leftHandController.position) / 2;
+
+        //왼손으로만 잡았을 때 왼쪽 컨트롤러 위치로 한다.
+
         handleCenter.localEulerAngles = Vector3.zero;
-        handleCenter.position = hand.position;
+
+        if (rightHandModel.activeSelf == true && leftHandModel.activeSelf == false)
+        {
+            handleCenter.position = rightHandController.position;
+        }
+        else if (rightHandModel.activeSelf == false && leftHandModel.activeSelf == true)
+        {
+            handleCenter.position = leftHandController.position;
+        }
+        else
+        {
+            handleCenter.position = centerPos;
+        }
+
         Vector3 localPos = handleCenter.localPosition;
         localPos.z = 0;
         localPos = localPos.normalized * 0.5f;
@@ -83,29 +104,32 @@ public class Handle : XRBaseInteractable
             //2. 선택된 상호작용이 있다면
             if (isSelected)
             {
-                //3. 핸들을 돌린다.
                 RotateHandle();
-                //print("핸들을 돌린다.");
             }
             else
             {
-                currentTime += Time.deltaTime;
-
-                if (totalRotateAngle != 0 && currentTime > initRotationTime)
-                {
-                    handle.Rotate(0, 0, handleRotationSpeed * directionOfRotation * Time.deltaTime);
-                    //회전각도 감소 시킨다.
-                    totalRotateAngle -= handleRotationSpeed * Time.deltaTime;
-                    if (totalRotateAngle <= 0)
-                    {
-                        totalRotateAngle = 0;
-                        handle.localEulerAngles = new Vector3(25, 0, 0);
-                        currentTime = 0f;
-                    }
-                }
+                InitAngle();
             }
-            SetInsideHandPosition();
+            SetGrabHandPosition();
             handleCenter.RotateAround(transform.position, transform.right, 25);
+        }
+    }
+
+    private void InitAngle()
+    {
+        currentTime += Time.deltaTime;
+
+        if (totalRotateAngle != 0 && currentTime > initRotationTime)
+        {
+            handle.Rotate(0, 0, handleRotationSpeed * directionOfRotation * Time.deltaTime);
+            //회전각도 감소 시킨다.
+            totalRotateAngle -= handleRotationSpeed * Time.deltaTime;
+            if (totalRotateAngle <= 0)
+            {
+                totalRotateAngle = 0;
+                handle.localEulerAngles = new Vector3(25, 0, 0);
+                currentTime = 0f;
+            }
         }
     }
 
@@ -122,13 +146,4 @@ public class Handle : XRBaseInteractable
 
         grabbedHand = handleCenter.localPosition.normalized;
     }
-
-    /*    private void OnTriggerEnter(Collider other)
-        {
-            //부딪힌 레이어가 Handle일 때 local 위치를 기억한다.
-            if (other.gameObject.layer == LayerMask.NameToLayer("Hand"))
-            {
-                GetComponent<Instance_ID>().rightHand.transform.localPosition = other.transform.position;
-            }
-        }*/
 }

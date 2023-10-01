@@ -19,7 +19,6 @@ public class WheelController : MonoBehaviour
 
     public bool leftStop;
     private float rightAcceleration;
-    private Vector2 backAcceleration;
 
     private void Awake()
     {
