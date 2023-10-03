@@ -14,6 +14,8 @@ public class HandleSuddenStop : MonoBehaviour
     private float breakLimitTime = 2;
     private float lightLimitTime = 3;
 
+    public AudioClip[] Clips;
+
     // 브레이크를 누른적이 있는지 확인
     private bool isBreakPushed;
 
@@ -82,6 +84,11 @@ public class HandleSuddenStop : MonoBehaviour
         {
             ScoreManager.instance.Deduction(suddenStopScore);
             print("출발 시 비상깜빡이 끄지않아서 감점: " + suddenStopScore);
+        }
+        else
+        {
+            audioSource.clip = Clips[0];
+            audioSource.Play();
         }
     }
 }
