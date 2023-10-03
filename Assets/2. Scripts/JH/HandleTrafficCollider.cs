@@ -6,8 +6,14 @@ using UnityEngine;
 public class HandleTrafficCollider : MonoBehaviour
 {
     private WheelController wheelController;
+    private AudioSource audioSource;
 
     public bool signalViolation;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();    
+    }
 
     // 신호가 빨간 불 일때 밟으면 실격
     private void OnTriggerEnter(Collider other)
@@ -36,6 +42,8 @@ public class HandleTrafficCollider : MonoBehaviour
             }
             signalViolation = false;
         }
+
+        audioSource.enabled = true;
     }
 }
 
