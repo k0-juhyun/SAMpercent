@@ -18,7 +18,6 @@ public class JHCarTest : MonoBehaviour
     public bool isEnd;
     public bool isBreak;
 
-
     private void Update()
     {
         #region ฑ๔บýภฬต้

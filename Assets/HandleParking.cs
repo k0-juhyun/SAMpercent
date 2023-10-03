@@ -9,6 +9,8 @@ public class HandleParking : MonoBehaviour
 
     private float stopTime = 2;
 
+    public GameObject EndObj;
+
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -47,6 +49,7 @@ public class HandleParking : MonoBehaviour
             audioSource.enabled = true;
             HandleNavi.instance.currentContent = HandleNavi.CurrentContent.End;
         }
-            
+        // 마지막 플로우 키고
+        EndObj.SetActive(true);
     }
 }
