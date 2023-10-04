@@ -25,7 +25,7 @@ public class HandleSuddenStop : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {   
+    {
         // 돌발 사운드 켜짐
         audioSource.enabled = true;
     }
@@ -52,28 +52,29 @@ public class HandleSuddenStop : MonoBehaviour
             if (breakLimitTime <= 0)
             {
                 ScoreManager.instance.Deduction(suddenStopScore);
+                audioSource.Stop();
                 print("2초 이내에 브레이크 밟지 않아서 감점: " + suddenStopScore);
             }
             break;
         }
 
         // 정지 후 3초 이내에 비상깜빡이 키지 않은 경우
-        if (wheelController.leftStop)
-        {
-            print("호출1");
-            while (!carTest.isHazardWarningLight && lightLimitTime > 0)
-            {
-                print("호출2");
-                lightLimitTime -= Time.deltaTime;
+        //if (wheelController.leftStop)
+        //{
+        //    print("호출1");
+        //    while (!carTest.isHazardWarningLight && lightLimitTime > 0)
+        //    {
+        //        print("호출2");
+        //        lightLimitTime -= Time.deltaTime;
 
-                if (lightLimitTime <= 0)
-                {
-                    ScoreManager.instance.Deduction(suddenStopScore);
-                    print("3초 이내에 비상깜빡이 키지않아서 감점: " + suddenStopScore);
-                }
-                break;
-            }
-        }
+        //        if (lightLimitTime <= 0)
+        //        {
+        //            ScoreManager.instance.Deduction(suddenStopScore);
+        //            print("3초 이내에 비상깜빡이 키지않아서 감점: " + suddenStopScore);
+        //        }
+        //        break;
+        //    }
+        //}
     }
 
     private void OnTriggerExit(Collider other)

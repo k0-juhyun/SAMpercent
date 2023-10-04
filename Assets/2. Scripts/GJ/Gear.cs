@@ -14,7 +14,6 @@ public class Gear : MonoBehaviour
         //var col = gearMesh.GetComponents<Collider>();
         //foreach (Collider col in gearMeshes)
         //{
-
         //    gearMeshes.Add(col);
         //}
     }
@@ -49,13 +48,7 @@ public class Gear : MonoBehaviour
         {
             this.transform.localPosition = new Vector3(Mathf.Clamp(this.transform.localPosition.x, -0.0045f, 0.005f), 0f, Mathf.Clamp(this.transform.localPosition.z, -0.035f, 0f));
         }
-        else if (other == !gearMesh)
-        {
-            this.transform.position = Vector3.zero;
-        }
     }
-
-
 
     private void Update()
     {
@@ -64,6 +57,4 @@ public class Gear : MonoBehaviour
         this.transform.localScale = Vector3.one;
         //this.transform.localPosition = new Vector3(Mathf.Clamp(this.transform.localPosition.x, -0.0045f, 0.005f), 0f, Mathf.Clamp(this.transform.localPosition.z, -0.035f, 0f));
     }
-
-
 }
