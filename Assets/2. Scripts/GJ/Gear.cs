@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Gear : MonoBehaviour
 {
@@ -44,10 +45,16 @@ public class Gear : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other == gearMeshes[0] || other == gearMeshes[1] || other == gearMeshes[2] || other == gearMeshes[3] || other == gearMeshes[4])
-        {
-            this.transform.localPosition = new Vector3(Mathf.Clamp(this.transform.localPosition.x, -0.0045f, 0.005f), 0f, Mathf.Clamp(this.transform.localPosition.z, -0.035f, 0f));
-        }
+        //if (other == gearMeshes[0] || other == gearMeshes[1] || other == gearMeshes[2] || other == gearMeshes[3] || other == gearMeshes[4])
+        //{
+        //    this.transform.SetParent(gearParent.transform);
+        //    this.transform.localScale = Vector3.one;
+        //    //this.transform.localPosition = new Vector3(Mathf.Clamp(this.transform.localPosition.x, -0.0045f, 0.005f), 0f, Mathf.Clamp(this.transform.localPosition.z, -0.035f, 0f));
+        //}
+        //else
+        //{
+        //    //this.transform.localPosition = new Vector3(0, 0, 0);
+        //}
     }
 
     private void Update()
@@ -55,6 +62,6 @@ public class Gear : MonoBehaviour
         // 부모 풀리는 예외 처리 및 스케일 튀는 현상 방지
         this.transform.SetParent(gearParent.transform);
         this.transform.localScale = Vector3.one;
-        //this.transform.localPosition = new Vector3(Mathf.Clamp(this.transform.localPosition.x, -0.0045f, 0.005f), 0f, Mathf.Clamp(this.transform.localPosition.z, -0.035f, 0f));
+        this.transform.localPosition = new Vector3(Mathf.Clamp(this.transform.localPosition.x, -0.0045f, 0.005f), 0f, Mathf.Clamp(this.transform.localPosition.z, -0.035f, 0f));
     }
 }
