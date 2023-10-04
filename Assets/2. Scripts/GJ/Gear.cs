@@ -47,7 +47,6 @@ public class Gear : MonoBehaviour
     {
         if (other == gearMeshes[0] || other == gearMeshes[1] || other == gearMeshes[2] || other == gearMeshes[3] || other == gearMeshes[4])
         {
-            Debug.Log(other);
             this.transform.localPosition = new Vector3(Mathf.Clamp(this.transform.localPosition.x, -0.0045f, 0.005f), 0f, Mathf.Clamp(this.transform.localPosition.z, -0.035f, 0f));
         }
         else if (other == !gearMesh)
