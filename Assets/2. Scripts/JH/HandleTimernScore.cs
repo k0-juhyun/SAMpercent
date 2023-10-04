@@ -15,7 +15,6 @@ public class HandleTimernScore : MonoBehaviour
     public TextMeshProUGUI sectionTimerText;
     public TextMeshProUGUI score;
     public TextMeshProUGUI violation;
-    public TextMeshProUGUI gearType;
 
     float totalSec;
     float totalMin;
