@@ -50,9 +50,10 @@ public class Handle : XRBaseInteractable
 
         GetComponent<Instance_ID>().rightHand.transform.position = rightHandController.position;
 
+        GetComponent<Instance_ID>().leftHand.transform.position = leftHandController.position;
+
         //원상복구 하는 도중 남은 각도를 원래값으로 되돌리자
         totalRotateAngle *= -directionOfRotation;
-        print("핸들을 선택했다.");
     }
 
     private void AssignDirection()
@@ -62,31 +63,16 @@ public class Handle : XRBaseInteractable
 
         //회전각을 절대 값으로 만든다.
         totalRotateAngle = Mathf.Abs(totalRotateAngle);
-        print("핸들을 나갔다.");
     }
 
     private void SetGrabHandPosition()
     {
-        //수직으로 세운다.
-
-        Vector3 centerPos = (rightHandController.position + leftHandController.position) / 2;
-
         //왼손으로만 잡았을 때 왼쪽 컨트롤러 위치로 한다.
 
         handleCenter.localEulerAngles = Vector3.zero;
 
-        if (rightHandModel.activeSelf == true && leftHandModel.activeSelf == false)
-        {
-            handleCenter.position = rightHandController.position;
-        }
-        else if (rightHandModel.activeSelf == false && leftHandModel.activeSelf == true)
-        {
-            handleCenter.position = leftHandController.position;
-        }
-        else
-        {
-            handleCenter.position = centerPos;
-        }
+        //오른손만 잡았을 때 오른손 위치를 기반
+        if (leftHandModel.activeSelf || rightHandModel.activeSelf) handleCenter.position = rightHandController.position;
 
         Vector3 localPos = handleCenter.localPosition;
         localPos.z = 0;

@@ -10,7 +10,7 @@ public class WheelController : MonoBehaviour
     public WheelCollider[] wheelColliders = new WheelCollider[4];
 
     //가속 힘을 지정한다.
-    public float acceleration = 500f, breakingForce = 300f, maxTurnAngle = 45f, rotationRate = 30f;
+    public float acceleration = 20f, breakingForce = 10f, maxTurnAngle = 25f, rotationRate = 60f;
 
     //현재 가속도, 현재 정지힘을 0으로 초기화한다.
     private float currentAcceleration = 0f, currentBreakForce = 0f, currentTurnAngle;
@@ -43,6 +43,12 @@ public class WheelController : MonoBehaviour
         xrLeftController.inputDevice.TryGetFeatureValue(CommonUsages.triggerButton, out leftStop);
 
         xrRightController.inputDevice.TryGetFeatureValue(CommonUsages.trigger, out rightAcceleration);
+
+        //오른쪽 컨트롤러의 X 버튼을 눌렀을 때
+        xrRightController.inputDevice.TryGetFeatureValue(CommonUsages.primaryButton, out bool rightButton);
+
+        //rightButton이 true일 때 액셀 40, false일 때 엑셀 20 삼항 연산
+        acceleration = rightButton ? 40f : 20f;
     }
 
     private void InitWheelPropertys()
@@ -80,7 +86,6 @@ public class WheelController : MonoBehaviour
                 currentAcceleration = acceleration * rightAcceleration * 2;
             }
         }
-
     }
 
     private void backMove()
