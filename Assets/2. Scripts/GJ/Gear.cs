@@ -6,7 +6,7 @@ public class Gear : MonoBehaviour
 {
     public List<Collider> gearList;
     public List<Collider> gearMeshes;
-    public GameObject gearMesh;
+    public Collider gearMesh;
     public GameObject gearParent;
 
     private void Start()
@@ -14,7 +14,7 @@ public class Gear : MonoBehaviour
         //var col = gearMesh.GetComponents<Collider>();
         //foreach (Collider col in gearMeshes)
         //{
-            
+
         //    gearMeshes.Add(col);
         //}
     }
@@ -35,7 +35,8 @@ public class Gear : MonoBehaviour
         else if (col == gearList[2])
         {
             SAMPRO_EventManager.instance.RunEvent(Enumeration.GearEventType.eNeutral);
-        } // 주차 Parking
+        }
+        // 주차 Parking
         else if (col == gearList[3])
         {
             SAMPRO_EventManager.instance.RunEvent(Enumeration.GearEventType.eDrive);
@@ -44,8 +45,9 @@ public class Gear : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other == gearMesh)
+        if (other == gearMeshes[0] || other == gearMeshes[1] || other == gearMeshes[2] || other == gearMeshes[3] || other == gearMeshes[4])
         {
+            Debug.Log(other);
             this.transform.localPosition = new Vector3(Mathf.Clamp(this.transform.localPosition.x, -0.0045f, 0.005f), 0f, Mathf.Clamp(this.transform.localPosition.z, -0.035f, 0f));
         }
         else if (other == !gearMesh)
