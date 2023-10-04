@@ -33,6 +33,7 @@ public class HandleParking : MonoBehaviour
             }
             break;
         }
+        EndObj.SetActive(true);
     }
 
     // 주차 끝나고 나갈땐 사이드 브레이크 다시 내려야함
@@ -50,6 +51,5 @@ public class HandleParking : MonoBehaviour
             HandleNavi.instance.currentContent = HandleNavi.CurrentContent.End;
         }
         // 마지막 플로우 키고
-        EndObj.SetActive(true);
     }
 }

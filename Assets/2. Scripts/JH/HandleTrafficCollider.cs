@@ -39,11 +39,11 @@ public class HandleTrafficCollider : MonoBehaviour
             {
                 HandleNavi.instance.HandleNextContent();
                 HandleNavi.instance.currentContent = HandleNavi.CurrentContent.Parking;
+                audioSource.enabled = true;
             }
             signalViolation = false;
         }
 
-        audioSource.enabled = true;
     }
 }
 
