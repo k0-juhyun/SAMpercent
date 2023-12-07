@@ -11,7 +11,7 @@ Unity 2019.3.26f1
 |Category|Content|
 |:---:|:---:|
 |**Game**| VR Game|  
-|**Game mode**| Player vs AI|     
+|**Game mode**| Simulation|     
 |**Software**|  Unity|  
 |**Language**|  C#|   
 
@@ -20,15 +20,15 @@ Unity 2019.3.26f1
 ✔️ 팀원   
 
 🔹 XR(Unity)   
-고주현 :
-변동환 : 
-이길재 :    
+고주현 : 점수 시스템 및 기어 판별 개발
+배민재 : VR 컨트롤러를 이용한 핸들 개발 
+이길재 : VR 컨트롤러를 이용한 기어 개발
 
 🔹 XR(Unity)
-전성균 :
+전성균 : 일정 관리, ㅈ
 
 🔹 Modeling
-박건호 :
+박건호 : 맵 레벨 제작
 
 # 📅 진행 기록
 
