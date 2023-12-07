@@ -1,27 +1,34 @@
-# 📖 프로젝트 명
+# ✏️ 프로젝트 명
 ### SAMpercent  
-   
+Unity 2019.3.26f1 
+
+# 📆 프로젝트 기간    
 2023.09.04 ~ 2023.09.29   
-Unity 2019.3.26f1    
 
 # 📃 프로젝트 소개
 
-### VR 운전면허 기능시험 시뮬레이션입니다.
-
-✔️ **Game** : VR Game 
-✔️ **Game mode**: Simulation     
-✔️ **Software** : Unity  
-✔️ **Language** : C#   
+### ✔️ VR 운전면허 기능시험 시뮬레이션입니다.
+|Category|Content|
+|:---:|:---:|
+|**Game**| VR Game|  
+|**Game mode**| Player vs AI|     
+|**Software**|  Unity|  
+|**Language**|  C#|   
 
 # 👩‍🔧 팀원 소개 및 역할
 
 ✔️ 팀원   
 
 🔹 XR(Unity)   
-   <p>   고주현 : </p>
-   <p>   이길재 : </p> 
-   <p>   변동환 : </p>    
+고주현 :
+변동환 : 
+이길재 :    
 
+🔹 XR(Unity)
+전성균 :
+
+🔹 Modeling
+박건호 :
 
 # 📅 진행 기록
 
