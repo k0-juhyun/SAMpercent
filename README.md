@@ -8,10 +8,10 @@ Unity 2019.3.26f1
 
 ### VR 운전면허 기능시험 시뮬레이션입니다.
 
-**Game** : VR Game 
-**Game mode**: Simulation     
-**Software** : Unity  
-**Language** : C#   
+✔️ **Game** : VR Game 
+✔️ **Game mode**: Simulation     
+✔️ **Software** : Unity  
+✔️ **Language** : C#   
 
 # 👩‍🔧 팀원 소개 및 역할
 
