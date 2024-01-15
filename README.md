@@ -26,8 +26,9 @@ Unity 2019.3.26f1
 
 이길재 : VR 컨트롤러를 이용한 기어 개발
 
-🔹 XR(Unity)
+🔹 Project Management
 전성균 : 일정 관리
+심현정 : 일정 관리
 
 🔹 Modeling
 박건호 : 맵 레벨 제작
